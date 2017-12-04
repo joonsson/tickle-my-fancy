@@ -11,8 +11,12 @@ jobs:
 
       - checkout
 
+
       - restore_cache:
           key: circleci-tickle-my-fancy-{{ checksum "pom.xml" }}
+
+      - run: npm install
+      - run: npm run build
       
       - run: mvn dependency:go-offline
       
