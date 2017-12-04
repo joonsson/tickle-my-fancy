@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lintless": "stylelint websource/style.less",
+    "lintts": "tslint -c tslint.json 'websource/**/*.ts'",
+    "lint": "npm run lintless && npm run lintts",
+    "less": "lessc websource/style.less src/main/resources/static/style.css",
+    "bundle": "webpack",
+    "build": "npm run lint && npm run bundle && npm run less"
   },
   "repository": {
     "type": "git",
@@ -17,7 +23,6 @@
   },
   "homepage": "https://github.com/Frizze18/tickle-my-fancy#readme",
   "devDependencies": {
-    "eslint": "^4.12.0",
     "less": "^2.7.3",
     "stylelint": "^8.3.1",
     "stylelint-config-recommended": "^2.0.0",
