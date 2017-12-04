@@ -14,8 +14,4 @@ public class ControllerApplication {
 		SpringApplication.run(ControllerApplication.class, args);
 	}
 
-	@GetMapping("/")
-	public ModelAndView index(){
-		return new ModelAndView("test");
-	}
 }
