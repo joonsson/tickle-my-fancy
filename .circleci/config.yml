@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  install:
+  npmbuild:
     working_directory: ~/tmp
     docker:
       - image: circleci/node:7
@@ -8,7 +8,8 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run build
-    build:
+      
+  build:
     
     working_directory: ~/circleci-demo-java-spring
 
@@ -36,3 +37,10 @@ jobs:
       
       - store_artifacts:
           path: target/ticklez-0.0.1-SNAPSHOT.jar
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - npmbuild
+      - build
