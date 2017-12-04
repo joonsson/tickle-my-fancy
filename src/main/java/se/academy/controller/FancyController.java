@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import se.academy.repository.DbRepository;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import se.academy.repository.DbRepository;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -30,4 +32,16 @@ public class FancyController {
 
         return "index"; //TODO make it return page you were on
     }
+
+    @GetMapping("/registration")
+    public ModelAndView registration(){
+        return new ModelAndView("registration");
+    }
+
+    @PostMapping("/registration")
+    public void postRegistration(@RequestParam String email, @RequestParam String password){
+        System.out.println(email + " " + password);
+        repository.registerCustomer(email,password);
+    }
+
 }
