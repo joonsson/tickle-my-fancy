@@ -26,4 +26,6 @@ nbdist/
 application.properties
 node_modules
 
-static
+*.css
+bundle.js
+bundle.js.map
