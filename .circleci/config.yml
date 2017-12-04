@@ -1,6 +1,14 @@
 version: 2
 jobs:
-  build:
+  install:
+    working_directory: ~/tmp
+    docker:
+      - image: circleci/node:7
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+    build:
     
     working_directory: ~/circleci-demo-java-spring
 
@@ -11,12 +19,8 @@ jobs:
 
       - checkout
 
-
       - restore_cache:
           key: circleci-tickle-my-fancy-{{ checksum "pom.xml" }}
-
-      - run: npm install
-      - run: npm run build
       
       - run: mvn dependency:go-offline
       
