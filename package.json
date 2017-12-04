@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lintless": "stylelint websource/style.less",
+    "lintless": "stylelint websource/css/*.less",
     "lintts": "tslint -c tslint.json 'websource/**/*.ts'",
     "lint": "npm run lintless && npm run lintts",
-    "less": "lessc websource/style.less src/main/resources/static/style.css",
+    "less": "lessc websource/css/style.less src/main/resources/static/css/style.css",
     "bundle": "webpack",
     "build": "npm run lint && npm run bundle && npm run less"
   },
