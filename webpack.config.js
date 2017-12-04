@@ -1,8 +1,8 @@
 module.exports={
     devtool: 'source-map',
-    entry:'./javascript/code.ts',
+    entry:'./websource/script/code.ts',
     output:{
-        filename:'../static/script/bundle.js'
+        filename:'./src/main/resources/static/script/bundle.js'
     },
     resolve: {
         extensions: ['.ts', '.js']
