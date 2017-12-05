@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import se.academy.Domain.Customer;
 import se.academy.repository.DbRepository;
 import javax.servlet.http.HttpSession;
 
@@ -21,10 +22,23 @@ public class FancyController {
         return "index";
     }
 
-    @PostMapping("/login")
-    public String login(Model model, HttpSession session) {
+    @GetMapping("/login")
+    public String logintest(HttpSession session){
+        //TODO move login to indexpage?
+        return "login";
+    }
 
-        return "index"; //TODO make it return page you were on
+    @PostMapping("/login")
+    public String login(Model model, HttpSession session, @RequestParam String email, @RequestParam String password) {
+        Customer customer = repository.loginCustomer(email,password);
+        if (customer == null){
+            model.addAttribute("errorString","Email or Password does not exist");
+            return "login";
+        }
+        else{
+            session.setAttribute("sessionCustomer",customer);
+            return "index"; //TODO make it return page you were on
+        }
     }
 
     @GetMapping("/search")
