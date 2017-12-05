@@ -27,6 +27,18 @@ public class FancyController {
         return "index"; //TODO make it return page you were on
     }
 
+    @GetMapping("/search")
+    public String search(Model model, HttpSession session, @RequestParam String srch) {
+
+        return "index"; //TODO make it search results
+    }
+
+    @GetMapping("/p")
+    public String product(Model model, HttpSession session, @RequestParam int id) {
+
+        return "index"; //TODO make it product with ID id
+    }
+
     @GetMapping("/logout")
     public String logout(Model model, HttpSession session) {
 
