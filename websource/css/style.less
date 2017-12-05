@@ -1,24 +1,69 @@
 
+ @deepPurple:#7B008D;
+ @lightPurple:#C18DB2;
+ @yellow:#F3B606;
+ @brown:#56320F;
+ @dirtyWhite:#D8C5AA;
 
 #header{
     display: flex;
     flex-direction: row;
     justify-content: center;
     max-height: 10%;
-    background-color: pink;
+    background-color: @deepPurple;
+    color: @dirtyWhite;
     
+}
+#searchbar{
+    width: 100%;
+    position: relative;
+    top: 0;
+}
+.searchTerm {
+    float: left;
+    width: 85%;
+    border: 3px solid @lightPurple;
+    border-radius: 5px;
+    padding: 5px;
+    height: 20px;
+    outline: none;
+    color: @dirtyWhite;
+  }
+  .searchTerm:focus{
+    color: @deepPurple;
+  }
+  .searchButton {
+    cursor: pointer;
+    width: 40px;
+    height: 36px;
+
+    border: 1px solid @deepPurple;
+    border-radius: 5px;
+    text-align: center;
+    background: @lightPurple;
+    color: @brown;
+
+    font-size: 20px;
+    background-image: url(https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-128.png);
+    background-size: 85%;
+    background-position: center;
+}
+body{
+    height: 100%;
 }
 #menubar{
     display: flex;
     flex-direction: column;
-    background-color: blue;
+
     width: 60%;
     margin: auto;
     text-align: center;
     justify-content: space-between;
-    color: white;
+ 
     border: 20px;
     max-height: 100%;
+
+
 }
 #cartbox{
     display: flex;
@@ -27,7 +72,7 @@
    width: 20%;
    margin: auto;
    max-height: 100%;
-   background-color: green;
+ 
    justify-content: center;
    cursor: pointer;
 }
@@ -41,8 +86,6 @@
     max-height: 100%;
     width: 50%;
 }
-
-
 #logoDiv{
     color: white;
     width: 20%;
@@ -59,13 +102,59 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: red;
+    background-color: @brown;
+    border: 1px solid @brown;
+    padding: 40px 0px;
+    width: 100%;
+    max-height: 5%;
 }
 #pageContent{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
+    //justify-content: center;
+    font-family: Arial, Helvetica, sans-serif; //our type!!!!!
     font-size: 18px;
-    background-color: yellow;
+    background-color: @dirtyWhite;
+    min-height: 800px;
 }
+#mainPage{
+    max-width:100%;
+    
+    flex-direction: column;
+    justify-content: center;
+    background-color: @dirtyWhite;
+    flex-grow: 1;
+    border: 2px solid @lightPurple;
+}
+#julkalender{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: 'Mountains of Christmas', cursive; //OUR TYPW!!!
+    background-color: rgba(255, 0, 0, 0.507);
+    max-width: 100%;
+    margin-top: auto;
+}
+#subcategoryMenu{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    max-width: 20%;
+    max-height: 100%;
+    background-color: @dirtyWhite;
+    margin: left;
+    border: 2px solid @lightPurple;
+
+}
+#topsellers{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    max-width: 20%;
+    max-height: 100%;
+    background-color: @dirtyWhite;
+    margin: right;
+    border: 2px solid @lightPurple;
+}
+ 
+ 
