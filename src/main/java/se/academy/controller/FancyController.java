@@ -30,4 +30,16 @@ public class FancyController {
 
         return "index"; //TODO make it return page you were on
     }
+
+    @GetMapping("/registration")
+    public ModelAndView registration(){
+        return new ModelAndView("registration");
+    }
+
+    @PostMapping("/registration")
+    public void postRegistration(@RequestParam String email, @RequestParam String password, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String address, @RequestParam String zip, @RequestParam String city, @RequestParam String phone){
+        System.out.println(email + " " + password);
+        repository.registerCustomer(email,password, firstName, lastName, address, zip, city, phone);
+    }
+
 }
