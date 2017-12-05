@@ -94,7 +94,7 @@ public class DbRepository {
             }
             return products;
         } catch (SQLException e) {
-            System.err.println("ERROR IN getProduct");
+            System.err.println("ERROR IN search");
         }
         return null;
     }
