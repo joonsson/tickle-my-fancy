@@ -2,11 +2,13 @@ package se.academy.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import se.academy.Domain.Customer;
 
 
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Component
@@ -29,6 +31,24 @@ public class DbRepository {
         catch (SQLException e){
             System.err.println("ERROR IN registerCustomer");
         }
+    }
+
+    public Customer loginCustomer(String email, String password){
+        try(Connection conn = dataSource.getConnection();
+        PreparedStatement statement = conn.prepareStatement("SELECT * FROM customer WHERE email = ? and password =?;")){
+            statement.setString(1,email);
+            statement.setString(2,password);
+            ResultSet rs = statement.executeQuery();
+            if (!rs.next()) {
+                return null;//TODO return a errorobject/interface thingie???
+            } else {
+                Customer freshLoginCustomer = new Customer();
+            }
+    }
+    catch (SQLException e){
+        System.err.println("ERROR IN loginCustomer");
+    }
+    return null;
     }
 
 
