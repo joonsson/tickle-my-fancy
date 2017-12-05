@@ -104,7 +104,13 @@ public class DbRepository {
             statement = conn.prepareStatement("SELECT * FROM products WHERE name = %(?)%");
             statement.setString(1, searchString);
             statement.addBatch();
+            statement = conn.prepareStatement("SELECT * FROM products WHERE subcategory = (?)");
+            statement.setString(1, searchString);
+            statement.addBatch();
             statement = conn.prepareStatement("SELECT * FROM products WHERE category = (?)");
+            statement.setString(1, searchString);
+            statement.addBatch();
+            statement = conn.prepareStatement("SELECT * FROM products WHERE subcategory = %(?)%");
             statement.setString(1, searchString);
             statement.addBatch();
             statement = conn.prepareStatement("SELECT * FROM products WHERE category = %(?)%");
