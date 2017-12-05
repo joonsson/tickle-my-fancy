@@ -49,7 +49,17 @@ public class DbRepository {
             if (!rs.next()) {
                 return null;//TODO return a errorobject/interface thingie???
             } else {
-                Customer freshLoginCustomer = new Customer();
+                Customer freshLoginCustomer = new Customer(
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("firstName"),
+                        rs.getString("lastName"),
+                        rs.getString("address"),
+                        rs.getString("zip"),
+                        rs.getString("city"),
+                        rs.getString("phone")
+                );
+                return freshLoginCustomer;
             }
     }
     catch (SQLException e){
