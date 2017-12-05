@@ -5,12 +5,23 @@
     <title>Title</title>
 </head>
 <body>
-    <h2>Registrera</h2>
-    <form action="/registration" method="post">
-        email: <input name="email" type="text" />
-        password: <input name="password" type="password" />
-        <input type="submit" value="registrera"/>
-    </form>
+
+<div class="generateForm">
+    <h1>Registrera</h1>
+    <div class="registrationInput">
+        <form action="/registration" method="post">
+            Email: <input name="email" type="text" />
+            Password: <input name="password" type="password" />
+            Firstname: <input name="firstName" type="text" />
+            Lastname: <input name="lastName" type="text" />
+            Address: <input name="address" type="text" />
+            Zip: <input name="zip" type="text" />
+            City: <input name="city" type="text" />
+            Phone: <input name="phone" type="text"/>
+            <input type="submit" value="registrera"/>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
