@@ -21,28 +21,29 @@ public class DbRepository {
 
     }
 
-    public void registerCustomer(String email, String password, String firstName, String lastName, String address, String zip, String city, String phone){
+    public void registerCustomer(Customer formCustomer){
         try(Connection conn = dataSource.getConnection();
             PreparedStatement statement = conn.prepareStatement("INSERT INTO customer(email,password,firstName,lastName,address,zip,city,phone) VALUES (?,?,?,?,?,?,?,?);")){
-            statement.setString(1,email);
-            statement.setString(2,password);
-            statement.setString(3,firstName);
-            statement.setString(4,lastName);
-            statement.setString(5,address);
-            statement.setString(6,zip);
-            statement.setString(7,city);
-            statement.setString(8,phone);
+            statement.setString(1,formCustomer.getEmail());
+            statement.setString(2,formCustomer.getPassword());
+            statement.setString(3,formCustomer.getFirstname());
+            statement.setString(4,formCustomer.getLastname());
+            statement.setString(5,formCustomer.getAddress());
+            statement.setString(6,formCustomer.getZip());
+            statement.setString(7,formCustomer.getCity());
+            statement.setString(8,formCustomer.getPhone());
 
             statement.executeUpdate();
         }
         catch (SQLException e){
+            e.printStackTrace();
             System.err.println("ERROR IN registerCustomer");
         }
     }
 
     public Customer loginCustomer(String email, String password){
         try(Connection conn = dataSource.getConnection();
-        PreparedStatement statement = conn.prepareStatement("SELECT * FROM customer WHERE email = ? and password =?;")){
+        PreparedStatement statement = conn.prepareStatement("SELECT * FROM customer WHERE email = ? and password =? ;")){
             statement.setString(1,email);
             statement.setString(2,password);
             ResultSet rs = statement.executeQuery();
@@ -56,6 +57,23 @@ public class DbRepository {
         System.err.println("ERROR IN loginCustomer");
     }
     return null;
+    }
+
+    public boolean checkIfCustomerExist(Customer customer){
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM customer WHERE email = ?;")){
+                statement.setString(1,customer.getEmail());
+                ResultSet rs = statement.executeQuery();
+                if(!rs.next()) {
+                    return false;
+                } else {
+                    return true;
+                }
+        }
+        catch (SQLException e) {
+                System.err.print("Error");
+        }
+        return true;
     }
 
 
