@@ -25,16 +25,29 @@ public class FancyController {
         return "index";
     }
 
-    @PostMapping("/login")
-    public String login(Model model, HttpSession session) {
+    @GetMapping("/login")
+    public String logintest(HttpSession session){
+        //TODO move login to indexpage?
+        return "login";
+    }
 
-        return "index"; //TODO make it return page you were on
+    @PostMapping("/login")
+    public String login(Model model, HttpSession session, @RequestParam String email, @RequestParam String password) {
+        Customer customer = repository.loginCustomer(email,password);
+        if (customer == null){
+            model.addAttribute("errorString","Email or Password does not exist");
+            return "login";
+        }
+        else{
+            session.setAttribute("sessionCustomer",customer);
+            return "index"; //TODO make it return page you were on
+        }
     }
 
     @GetMapping("/search")
     public String search(Model model, HttpSession session, @RequestParam String srch) {
-
-        return "index"; //TODO make it search results
+        model.addAttribute("products", repository.search(srch));
+        return "search";
     }
 
     @GetMapping("/p")
