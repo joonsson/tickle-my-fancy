@@ -3,6 +3,7 @@ package se.academy.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import se.academy.domain.Customer;
 import se.academy.repository.DbRepository;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 public class FancyController {
@@ -19,7 +21,9 @@ public class FancyController {
 
     @GetMapping("/")
     public String index(Model model, HttpSession session) {
+        model.addAttribute("products", repository.getBySubCategory("Fransar"));
         return "index";
+
     }
 
     @GetMapping("/login")
@@ -61,13 +65,22 @@ public class FancyController {
 
     @GetMapping("/registration")
     public ModelAndView registration(){
-        return new ModelAndView("registration");
+        Customer customer = new Customer();
+        return new ModelAndView("registration").addObject("customer", customer);
     }
 
     @PostMapping("/registration")
-    public void postRegistration(@RequestParam String email, @RequestParam String password, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String address, @RequestParam String zip, @RequestParam String city, @RequestParam String phone){
-        System.out.println(email + " " + password);
-        repository.registerCustomer(email,password, firstName, lastName, address, zip, city, phone);
-    }
+    public ModelAndView registration(@Valid Customer customer, BindingResult bindingResult, HttpSession session){
+        if(bindingResult.hasErrors()) {
+            return new ModelAndView("registration").addObject("customer", customer);
+        }
+        if(repository.checkIfCustomerExist(customer)) {
+            String emailOccupied = "Email redan registrerat";
+            return  new ModelAndView("registration").addObject("customer", customer).addObject("occupied",emailOccupied);
+        }
 
+
+        repository.registerCustomer(customer);
+        return new ModelAndView("index");
+    }
 }

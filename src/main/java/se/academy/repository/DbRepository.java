@@ -2,10 +2,8 @@ package se.academy.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import se.academy.domain.Product;
 import se.academy.domain.Customer;
-
+import se.academy.domain.Product;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -73,11 +71,11 @@ public class DbRepository {
         return null;
     }
 
-    public Customer loginCustomer(String email, String password) {
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement statement = conn.prepareStatement("SELECT * FROM customer WHERE email = ? and password =?;")) {
-            statement.setString(1, email);
-            statement.setString(2, password);
+      public Customer loginCustomer(String email, String password){
+        try(Connection conn = dataSource.getConnection();
+        PreparedStatement statement = conn.prepareStatement("SELECT * FROM customer WHERE email = ? and password = ? ;")){
+            statement.setString(1,email);
+            statement.setString(2,password);
             ResultSet rs = statement.executeQuery();
             if (!rs.next()) {
                 return null;//TODO return a errorobject/interface thingie???
@@ -99,6 +97,29 @@ public class DbRepository {
             e.printStackTrace();
         }
         return null;
+    }
+
+    catch (SQLException e){
+        System.err.println("ERROR IN loginCustomer");
+    }
+    return null;
+    }
+
+    public boolean checkIfCustomerExist(Customer customer){
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM customer WHERE email = ?;")){
+                statement.setString(1,customer.getEmail());
+                ResultSet rs = statement.executeQuery();
+                if(!rs.next()) {
+                    return false;
+                } else {
+                    return true;
+                }
+        }
+        catch (SQLException e) {
+                System.err.print("Error");
+        }
+        return true;
     }
 
     public Queue<Product> search(String searchString) {
@@ -145,6 +166,32 @@ public class DbRepository {
             e.printStackTrace();
         }
         return false;
+        }
+    public Queue <Product> getBySubCategory(String category){
+
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM products WHERE subcategory = (?)")){
+        statement.setString(1, category);
+
+        ResultSet resultSet = statement.executeQuery();
+        Queue <Product> products = new LinkedList<>();
+        while (resultSet.next()){
+            Product product = new Product(
+                    resultSet.getInt("productID"),
+                    resultSet.getString("name"),
+                    resultSet.getDouble("price"),
+                    resultSet.getString("description"),
+                    resultSet.getString("image"),
+                    resultSet.getString("category"),
+                    resultSet.getInt("quantity")
+            );
+            products.add(product);
+        }
+        return products;
+    } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public Queue<Product> queueHelper ( Queue<Product> products, ResultSet rs) throws SQLException {
