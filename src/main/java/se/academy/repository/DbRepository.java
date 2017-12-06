@@ -204,7 +204,7 @@ public class DbRepository {
     }
     
     public Queue<Product> getByCategory(String category) {
-        Queue<Product> products = getHelper("SELECT * FROM products WHERE category = (?)");
+        Queue<Product> products = getHelper("SELECT * FROM products WHERE category = (?)", category);
         return products;
     }
 
