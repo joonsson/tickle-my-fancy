@@ -21,7 +21,9 @@ public class FancyController {
 
     @GetMapping("/")
     public String index(Model model, HttpSession session) {
+        model.addAttribute("products", repository.getBySubCategory("Fransar"));
         return "index";
+
     }
 
     @GetMapping("/login")

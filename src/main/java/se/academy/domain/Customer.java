@@ -1,10 +1,7 @@
 package se.academy.domain;
-
 import javax.validation.constraints.*;
 
 public class Customer {
-
-
     @Size(min=1, max=50)
     private String email;
     @Size(min=5, max=15)
@@ -20,6 +17,7 @@ public class Customer {
     @Size(min=3, max=50)
     private String city;
     @Size(min=7, max=10)
+
     private String phone;
 
     public Customer(){

@@ -50,6 +50,7 @@
 }
 body{
     height: 100%;
+    max-width: 1200px;
 }
 #menubar{
     display: flex;
@@ -58,11 +59,16 @@ body{
     width: 60%;
     margin: auto;
     text-align: center;
-    justify-content: space-between;
+    justify-content: space-around;
  
     border: 20px;
     max-height: 100%;
-
+}
+#menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
 
 }
 #cartbox{
@@ -102,13 +108,51 @@ body{
     bottom: 0px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     background-color: @brown;
     border: 1px solid @brown;
     padding: 40px 0px;
     width: 100%;
     max-height: 5%;
 }
+// why did I need to have the styling on the section and not on the div footer??
+.foot{
+    bottom: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: @brown;
+    border: 1px solid @brown;
+    padding: 40px 0px;
+    width: 100%;
+    max-height: 5%;
+
+}
+.shopsection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 25%;
+}
+.informationsection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 25%;
+}
+.socialsection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 25%;
+}
+.helpsection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 25%;
+}
+
 #pageContent{
     display: flex;
     flex-direction: row;
@@ -127,6 +171,18 @@ body{
     flex-grow: 1;
     border: 2px solid @lightPurple;
 }
+.recommendedProduct{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.recommendedCategory{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: auto;
+
+}
 #julkalender{
     display: flex;
     flex-direction: row;
@@ -143,7 +199,6 @@ body{
     max-width: 20%;
     max-height: 100%;
     background-color: @dirtyWhite;
-    margin: left;
     border: 2px solid @lightPurple;
 
 }
@@ -154,7 +209,6 @@ body{
     max-width: 20%;
     max-height: 100%;
     background-color: @dirtyWhite;
-    margin: right;
     border: 2px solid @lightPurple;
 }
  

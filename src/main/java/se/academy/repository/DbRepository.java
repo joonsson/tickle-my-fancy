@@ -149,6 +149,33 @@ public class DbRepository {
         return null;
     }
 
+    public Queue <Product> getBySubCategory(String category){
+
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM products WHERE subcategory = (?)")){
+        statement.setString(1, category);
+
+        ResultSet resultSet = statement.executeQuery();
+        Queue <Product> products = new LinkedList<>();
+        while (resultSet.next()){
+            Product product = new Product(
+                    resultSet.getInt("productID"),
+                    resultSet.getString("name"),
+                    resultSet.getDouble("price"),
+                    resultSet.getString("description"),
+                    resultSet.getString("image"),
+                    resultSet.getString("category"),
+                    resultSet.getInt("quantity")
+            );
+            products.add(product);
+        }
+        return products;
+    } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public Queue<Product> queueHelper ( Queue<Product> products, ResultSet rs) throws SQLException {
         while (rs.next()) {
             Product product = new Product
