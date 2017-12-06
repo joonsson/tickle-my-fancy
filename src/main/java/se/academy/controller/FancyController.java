@@ -45,8 +45,8 @@ public class FancyController {
 
     @GetMapping("/search")
     public String search(Model model, HttpSession session, @RequestParam String srch) {
-
-        return "index"; //TODO make it search results
+        model.addAttribute("products", repository.search(srch));
+        return "search";
     }
 
     @GetMapping("/p")

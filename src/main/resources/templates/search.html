@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="Stylesheet" href="./css/style.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Mountains+of+Christmas');
+    </style>
+    <title>Beauty and the beasts</title>
+
+</head>
+
+<body>
+    <header id="header">
+        <div id="logoDiv">
+            <img src="https://i.ytimg.com/vi/e3Nl_TCQXuw/maxresdefault.jpg" id="logo" />
+        </div>
+        <div id="menubar">
+            <div id="searchbar">
+                <input type="text" id="searchTerm" placeholder="What are you looking for?" />
+                <button type="submit" id="searchButton"> </button>
+            </div>
+            <div id="menu">
+                <span>category1</span>
+                <span>category2</span>
+                <span>category3</span>
+                <span>category4</span>
+                <span>category5</span>
+                <span>category6</span>
+            </div>
+        </div>
+        <div id="cartbox">
+            <!-- here we have som links to both the login in site and to the cart. these doesn't need to be links, we can use SPA if we want. -->
+            <div id="login">
+                <a href="registration.html">
+                    <img src="./img/loginlogo.png" id="loginlogo" />
+                </a>
+            </div>
+            <div id="cart">
+                <img src="./img/shopping-cart.png" id="cartlogo" />
+            </div>
+        </div>
+    </header>
+
+    <section id="pageContent">
+
+        <div id="subcategoryMenu">
+            <p>
+                Here will we display a menu with subcategories
+            </p>
+        </div>
+
+
+        <div id="mainPage">
+            <td>
+                <tr class="productlist" th:each="product : ${products}">
+                    <td>
+                        <p th:text="${product.name}"></p>
+                        <p th:text="${product.price}"></p>
+                        <p th:text="${product.description}"></p>
+                    </td>
+                    <td>
+                        <p th:text="${product.inStorage}"></p>
+                    </td>
+                </tr>
+            </td>
+        </div>
+    </section>
+    <div id="footer">
+        <p>some information about us</p>
+
+    </div>
+    <script src="./script/bundle.js"></script>
+</body>
+
+</html>
