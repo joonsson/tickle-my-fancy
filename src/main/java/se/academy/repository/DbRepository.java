@@ -2,7 +2,7 @@ package se.academy.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import se.academy.Domain.Customer;
+import se.academy.domain.Customer;
 
 
 import javax.sql.DataSource;
