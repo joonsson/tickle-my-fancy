@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import se.academy.domain.Product;
-import se.academy.Domain.Customer;
+import se.academy.domain.Customer;
 
 
 import javax.sql.DataSource;
@@ -25,7 +25,7 @@ public class DbRepository {
 
     }
 
-    public void registerCustomer(String email, String password, String firstName, String lastName, String address, String zip, String city, String phone) {
+    public boolean registerCustomer(String email, String password, String firstName, String lastName, String address, String zip, String city, String phone) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement statement = conn.prepareStatement("INSERT INTO customer(email,password,firstName,lastName,address,zip,city,phone) VALUES (?,?,?,?,?,?,?,?);")) {
             statement.setString(1, email);
@@ -36,10 +36,15 @@ public class DbRepository {
             statement.setString(6, zip);
             statement.setString(7, city);
             statement.setString(8, phone);
-            statement.executeUpdate();
+            int result = statement.executeUpdate();
+
+            if (result == 1) {
+                return true;
+            }
         } catch (SQLException e) {
             System.err.println("ERROR IN registerCustomer");
         }
+        return false;
     }
 
     public Product getProduct(int id) {
@@ -52,7 +57,7 @@ public class DbRepository {
                         (rs.getInt("productID"),
                                 rs.getString("name"),
                                 rs.getDouble("price"),
-                                rs.getString("desciption"),
+                                rs.getString("description"),
                                 rs.getString("image"),
                                 rs.getString("category"),
                                 rs.getString("subcategory"),
@@ -125,6 +130,21 @@ public class DbRepository {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean removeCustomer (String email) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement statement = conn.prepareStatement("DELETE FROM customer WHERE email = (?)")) {
+            statement.setString(1, email);
+            int rs = statement.executeUpdate();
+            if (rs == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.err.println("ERROR IN getProduct");
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public Queue<Product> queueHelper ( Queue<Product> products, ResultSet rs) throws SQLException {

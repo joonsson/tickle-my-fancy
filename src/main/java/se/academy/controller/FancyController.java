@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import se.academy.Domain.Customer;
+import se.academy.domain.Customer;
 import se.academy.repository.DbRepository;
 import javax.servlet.http.HttpSession;
 
