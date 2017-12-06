@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import se.academy.domain.Product;
-import se.academy.Domain.Customer;
+import se.academy.domain.Customer;
 
 
 import javax.sql.DataSource;
@@ -134,4 +134,33 @@ public class DbRepository {
         }
         return null;
     }
+
+
+    public Queue <Product> getBySubCategory(String category){
+
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM products WHERE subcategory = (?)")){
+        statement.setString(1, category);
+
+        ResultSet resultSet = statement.executeQuery();
+        Queue <Product> products = new LinkedList<>();
+        while (resultSet.next()){
+            Product product = new Product(
+                    resultSet.getInt("productID"),
+                    resultSet.getString("name"),
+                    resultSet.getDouble("price"),
+                    resultSet.getString("description"),
+                    resultSet.getString("image"),
+                    resultSet.getString("category"),
+                    resultSet.getInt("quantity")
+            );
+            products.add(product);
+        }
+        return products;
+    } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -10,76 +10,116 @@
 
 </head>
 <body>
-    <header id="header">
-        <div id="logoDiv">
-            <img src="https://i.ytimg.com/vi/e3Nl_TCQXuw/maxresdefault.jpg" id="logo"/>
+<header id="header">
+    <div id="logoDiv">
+        <img src="https://i.ytimg.com/vi/e3Nl_TCQXuw/maxresdefault.jpg" id="logo"/>
+    </div>
+    <div id="menubar">
+        <div id="searchbar">
+            <input type="text" class="searchTerm" placeholder="What are you looking for?"/>
+            <button type="submit" class="searchButton"></button>
         </div>
-        <div id="menubar">
-            <div id="searchbar">
-                <input type="text" class="searchTerm" placeholder="What are you looking for?"/>
-                <button type="submit" class="searchButton"> </button>
-            </div>
-            <div id="menu">
-                <span >category1</span>
-                <span >category2</span>
-                <span >category3</span>
-                <span >category4</span>
-                <span >category5</span>
-                <span >category6</span>
-            </div>
+        <div id="menu">
+            <span>category1</span>
+            <span>category2</span>
+            <span>category3</span>
+            <span>category4</span>
+            <span>category5</span>
+            <span>category6</span>
         </div>
-        <div id="cartbox">
-            <!-- here we have som links to both the login in site and to the cart. these doesn't need to be links, we can use SPA if we want. -->
-            <div id="login"><a href="registration.html"><img src="./img/loginlogo.png" id="loginlogo"/></a></div>
-            <div id="cart" ><img src="./img/shopping-cart.png" id="cartlogo"/></div>
-        </div>
-    </header>
+    </div>
+    <div id="cartbox">
+        <!-- here we have som links to both the login in site and to the cart. these doesn't need to be links, we can use SPA if we want. -->
+        <div id="login"><a href="registration.html"><img src="./img/loginlogo.png" id="loginlogo"/></a></div>
+        <div id="cart"><img src="./img/shopping-cart.png" id="cartlogo"/></div>
+    </div>
+</header>
 
-    <section id="pageContent">
+<section id="pageContent">
 
-        <div id="subcategoryMenu">
-            <p>
-                Here will we display a menu with subcategories
-            </p>
-        </div>
-       
+    <div id="subcategoryMenu">
+        <p>
+            Here will we display a menu with subcategories
+        </p>
+    </div>
 
-        <div id="mainPage">
-            <div id="julkalender">
+
+    <div id="mainPage">
+        <div id="julkalender">
             <p>julkalender!</p>
             <p>Lucka ?</p>
             <p>Ny lucka varjedag!</p>
             <div>
                 <img src="" id="bildPaJulklappenForDagen"/>
             </div>
-            
+        </div>
+
+        <div class="recommendedCategory">
+            <h3>Makeup</h3>
+        </div>
+        <div class="recommendedProduct" id="makeup">
+        </div>
+
+        <div class="recommendedCategory">
+            <h3>Nail</h3>
+        </div>
+        <div class="recommendedProduct" id="nails">
+        </div>
+        <div class="recommendedCategory">
+            <h3>Eyes</h3>
+        </div>
+        <div class="recommendedProduct" id="eyes">
+            <div th:each="product : ${products}">
+                <p th:text="${product.name}"></p>
+                <p th:text="${product.price}">kr</p>
+                <p th:text="${product.description}"></p>
+
             </div>
-
-        <div id="makeup">
-            <p>makeup</p>
-            
-        </div>
-        
-        <div id="nails">
-            <p>nail</p>
-            
-            
-        </div>
-        
-        <div id="eyes">
-                <p>eye</p>
-
         </div>
     </div>
-            <div id="topsellers">
-                    <p>here we will have a list of our topsellers</p>
-                </div>
+    <div id="topsellers">
+        <p>here we will have a list of our topsellers</p>
+    </div>
+
+</section>
+<div id="footer">
+    <section class="foot">
+        <div class="shopsection">
+            <ul id="shop">SHOP</ul>
+            <li>Women</li>
+            <li>Men</li>
+            <li>Makeup</li>
+            <li>lipstift</li>
+        </div>
+
+        <div class="informationsection">
+            <ul>information</ul>
+            <li>carrer at Beauty and the beast</li>
+            <li>aboute Beauty and the beast</li>
+            <li>information</li>
+        </div>
+
+        <div class="helpsection">
+            <ul>help</ul>
+            <li>customer service</li>
+            <li>My profile</li>
+            <li>Gift Card</li>
+            <li>FAQ</li>
+        </div>
+
+        <div class="socialsection">
+            <ul>social</ul>
+            <li>Facebook</li>
+            <li>Instagram</li>
+            <li>Twitter</li>
+            <li>Mail</li>
+        </div>
+
 
     </section>
-    <div id="footer">
-       <p>some information about us</p>
 
-    </div>
+
+</div>
 </body>
 </html>
 

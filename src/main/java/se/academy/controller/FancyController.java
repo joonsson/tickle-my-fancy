@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import se.academy.Domain.Customer;
+import se.academy.domain.Customer;
 import se.academy.repository.DbRepository;
 import javax.servlet.http.HttpSession;
 
@@ -19,7 +19,9 @@ public class FancyController {
 
     @GetMapping("/")
     public String index(Model model, HttpSession session) {
+        model.addAttribute("products", repository.getBySubCategory("Fransar"));
         return "index";
+
     }
 
     @GetMapping("/login")
