@@ -9,8 +9,9 @@
     "lintts": "tslint -c tslint.json 'websource/**/*.ts'",
     "lint": "npm run lintless && npm run lintts",
     "less": "lessc websource/css/style.less src/main/resources/static/css/style.css",
+    "lessproduct": "lessc websource/css/productinfo.less src/main/resources/static/css/productinfo.css",
     "bundle": "webpack",
-    "build": "npm run lint && npm run bundle && npm run less"
+    "build": "npm run lint && npm run bundle && npm run less && npm run lessproduct"
   },
   "repository": {
     "type": "git",

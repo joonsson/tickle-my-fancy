@@ -40,33 +40,6 @@ public class DbRepository {
             e.printStackTrace();
         }
     }
-
-    public Product getProduct(int id) {
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement statement = conn.prepareStatement("SELECT * FROM products WHERE productID = (?)")) {
-            statement.setInt(1, id);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                Product product = new Product
-                        (rs.getInt("productID"),
-                                rs.getString("name"),
-                                rs.getDouble("price"),
-                                rs.getString("desciption"),
-                                rs.getString("image"),
-                                rs.getString("category"),
-                                rs.getString("subcategory"),
-                                rs.getInt("quantity"));
-                return product;
-            } else {
-                return null;
-            }
-        } catch (SQLException e) {
-            System.err.println("ERROR IN getProduct");
-            e.printStackTrace();
-        }
-        return null;
-    }
-
       public Customer loginCustomer(String email, String password){
         try(Connection conn = dataSource.getConnection();
         PreparedStatement statement = conn.prepareStatement("SELECT * FROM customer WHERE email = ? and password = ? ;")){
@@ -93,12 +66,6 @@ public class DbRepository {
             e.printStackTrace();
         }
         return null;
-    }
-
-    catch (SQLException e){
-        System.err.println("ERROR IN loginCustomer");
-    }
-    return null;
     }
 
     public boolean checkIfCustomerExist(Customer customer){
@@ -150,30 +117,43 @@ public class DbRepository {
     }
 
     public Queue <Product> getBySubCategory(String category){
+            Queue<Product> products = getHelper("SELECT * FROM products WHERE subcategory = (?)", category);
+            return products;
+        }
+
+    public Queue <Product> getHelper(String sqlStatement, String category) {
+
 
         try(Connection conn = dataSource.getConnection();
-            PreparedStatement statement = conn.prepareStatement("SELECT * FROM products WHERE subcategory = (?)")){
-        statement.setString(1, category);
-
-        ResultSet resultSet = statement.executeQuery();
-        Queue <Product> products = new LinkedList<>();
-        while (resultSet.next()){
-            Product product = new Product(
-                    resultSet.getInt("productID"),
-                    resultSet.getString("name"),
-                    resultSet.getDouble("price"),
-                    resultSet.getString("description"),
-                    resultSet.getString("image"),
-                    resultSet.getString("category"),
-                    resultSet.getInt("quantity")
-            );
-            products.add(product);
-        }
-        return products;
-    } catch (SQLException e) {
+            PreparedStatement statement = conn.prepareStatement(sqlStatement)){
+            statement.setString(1, category);
+            ResultSet resultSet = statement.executeQuery();
+            Queue <Product> products = new LinkedList<>();
+            while (resultSet.next()){
+                Product product = new Product(
+                        resultSet.getInt("productID"),
+                        resultSet.getString("name"),
+                        resultSet.getDouble("price"),
+                        resultSet.getString("description"),
+                        resultSet.getString("image"),
+                        resultSet.getString("category"),
+                        resultSet.getString("subcategory"),
+                        resultSet.getInt("quantity")
+                );
+                products.add(product);
+            }
+            return products;
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    public Queue <Product> getBySubCategoryTop3(String category) {
+
+        Queue<Product> products = getHelper("SELECT TOP (3) * FROM products WHERE subcategory = (?)", category);
+        return products;
     }
 
     public Queue<Product> queueHelper ( Queue<Product> products, ResultSet rs) throws SQLException {
@@ -190,5 +170,30 @@ public class DbRepository {
             products.add(product);
         }
         return  products;
+    }
+
+    public Product getProduct(int productID) {
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM products WHERE productID = (?)")){
+            statement.setInt(1, productID);
+            ResultSet rs = statement.executeQuery();
+           Product product;
+            while(rs.next()){
+                 product = new Product(
+                        rs.getInt("productID"),
+                        rs.getString("name"),
+                        rs.getDouble("price"),
+                        rs.getString("description"),
+                        rs.getString("image"),
+                        rs.getString("category"),
+                        rs.getString("subcategory"),
+                        rs.getInt("quantity")
+                );
+                return product;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

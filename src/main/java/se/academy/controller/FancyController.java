@@ -21,7 +21,9 @@ public class FancyController {
 
     @GetMapping("/")
     public String index(Model model, HttpSession session) {
-        model.addAttribute("products", repository.getBySubCategory("Fransar"));
+        model.addAttribute("makeUp", repository.getBySubCategoryTop3("Fransar"));
+        model.addAttribute("nails", repository.getBySubCategoryTop3("läppstift"));
+        model.addAttribute("eyes", repository.getBySubCategoryTop3("Fransar"));
         return "index";
 
     }
@@ -78,9 +80,15 @@ public class FancyController {
             String emailOccupied = "Email redan registrerat";
             return  new ModelAndView("registration").addObject("customer", customer).addObject("occupied",emailOccupied);
         }
-
-
         repository.registerCustomer(customer);
         return new ModelAndView("index");
+    }
+
+    // HAR JAG TÄNKT RÄTT HÄR?,
+    @GetMapping("/productinfo")
+    public String productInfo (Model model, HttpSession session, @RequestParam int productID){
+        model.addAttribute("product", repository.getProduct(productID));
+
+        return "productinfo";
     }
 }
