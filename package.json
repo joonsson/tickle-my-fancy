@@ -8,7 +8,9 @@
     "lintless": "stylelint websource/css/*.less",
     "lintts": "tslint -c tslint.json 'websource/**/*.ts'",
     "lint": "npm run lintless && npm run lintts",
-    "less": "lessc websource/css/style.less src/main/resources/static/css/style.css",
+    "styleless": "lessc websource/css/style.less src/main/resources/static/css/style.css",
+    "customerless": "lessc websource/css/customer.less src/main/resources/static/css/customer.css",
+    "less": "npm run styleless && npm run customerless",
     "bundle": "webpack",
     "build": "npm run lint && npm run bundle && npm run less"
   },
