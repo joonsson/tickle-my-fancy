@@ -1,4 +1,4 @@
-package se.academy.Domain;
+package se.academy.domain;
 
 import javax.validation.constraints.*;
 

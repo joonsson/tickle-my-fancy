@@ -2,11 +2,8 @@ package se.academy.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
+import se.academy.domain.Customer;
 import se.academy.domain.Product;
-import se.academy.Domain.Customer;
-
-
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
