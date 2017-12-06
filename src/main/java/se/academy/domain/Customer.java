@@ -1,4 +1,5 @@
 package se.academy.domain;
+
 import javax.validation.constraints.*;
 
 public class Customer {
