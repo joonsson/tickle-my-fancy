@@ -44,6 +44,7 @@ public class DbRepository {
         }
         return false;
     }
+
     public Customer loginCustomer(String email, String password) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement statement = conn.prepareStatement("SELECT * FROM customer WHERE email = ? and password = ? ;")) {
@@ -167,10 +168,6 @@ public class DbRepository {
         return false;
     }
 
-               
-
-
-
     public Queue <Product> getBySubCategoryTop3(String category) {
 
         Queue<Product> products = getHelper("SELECT TOP (3) * FROM products WHERE subcategory = (?)", category);
@@ -178,7 +175,7 @@ public class DbRepository {
     }
     
     public Queue<Product> getByCategory(String category) {
-        Queue<Product> products = getHelper("SELECT * FROM products WHERE category = (?)");
+        Queue<Product> products = getHelper("SELECT * FROM products WHERE category = (?)", category);
         return products;
     }
 
