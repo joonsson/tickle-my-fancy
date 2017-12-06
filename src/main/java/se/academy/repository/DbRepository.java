@@ -95,12 +95,6 @@ public class DbRepository {
         return null;
     }
 
-    catch (SQLException e){
-        System.err.println("ERROR IN loginCustomer");
-    }
-    return null;
-    }
-
     public boolean checkIfCustomerExist(Customer customer){
         try(Connection conn = dataSource.getConnection();
             PreparedStatement statement = conn.prepareStatement("SELECT * FROM customer WHERE email = ?;")){
@@ -165,6 +159,7 @@ public class DbRepository {
                     resultSet.getString("description"),
                     resultSet.getString("image"),
                     resultSet.getString("category"),
+                    resultSet.getString("subcategory"),
                     resultSet.getInt("quantity")
             );
             products.add(product);
