@@ -40,14 +40,16 @@
         </div>
         <div th:if="${isLogedIn} == false">
             <form action="/login" method="post">
-                <div>Email:</div>
+                <div>E-postadress:</div>
                 <input name="email" type="text" />
-                <div>Password:</div>
+                <div>Lösenord:</div>
                  <input name="password" type="password" />
-                <input type="submit" value="login"/>
+                <input type="submit" value="Logga in"/>
                 <div th:text="${loginFail}"></div>
+                <div><a href="registration.html">Skapa nytt konto</a></div>
             </form>
         </div>
+        //TODO byta till mina sidor
         <div th:if="${isLogedIn} == true" id="login"><a href="registration.html"><img src="./img/loginlogo.png" id="loginlogo"/></a></div>
         <div th:if="${isLogedIn} == true" id="cart"><img src="./img/shopping-cart.png" id="cartlogo"/></div>
     </div>
