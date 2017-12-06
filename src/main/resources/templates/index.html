@@ -13,7 +13,8 @@
 
 <header id="header">
     <div id="logoDiv">
-        <img src="https://i.ytimg.com/vi/e3Nl_TCQXuw/maxresdefault.jpg" id="logo"/>
+        <!--<img src="https://i.ytimg.com/vi/e3Nl_TCQXuw/maxresdefault.jpg" id="logo"/>-->
+        <img src="./img/logo.png" id="logo"/>
     </div>
     <div id="menubar">
         <div id="searchbar">
@@ -32,8 +33,23 @@
     </div>
     <div id="cartbox">
         <!-- here we have som links to both the login in site and to the cart. these doesn't need to be links, we can use SPA if we want. -->
-        <div id="login"><a href="registration.html"><img src="./img/loginlogo.png" id="loginlogo"/></a></div>
-        <div id="cart"><img src="./img/shopping-cart.png" id="cartlogo"/></div>
+        <div th:if="${isLogedIn} == true" >
+            <form action="/logout" method="post">
+                <input type="submit" value="logout"/>
+            </form>
+        </div>
+        <div th:if="${isLogedIn} == false">
+            <form action="/login" method="post">
+                <div>Email:</div>
+                <input name="email" type="text" />
+                <div>Password:</div>
+                 <input name="password" type="password" />
+                <input type="submit" value="login"/>
+                <div th:text="${loginFail}"></div>
+            </form>
+        </div>
+        <div th:if="${isLogedIn} == true" id="login"><a href="registration.html"><img src="./img/loginlogo.png" id="loginlogo"/></a></div>
+        <div th:if="${isLogedIn} == true" id="cart"><img src="./img/shopping-cart.png" id="cartlogo"/></div>
     </div>
 </header>
 

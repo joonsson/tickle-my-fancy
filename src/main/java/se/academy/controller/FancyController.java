@@ -21,11 +21,25 @@ public class FancyController {
 
     @GetMapping("/")
     public String index(Model model, HttpSession session) {
+
         model.addAttribute("makeUp", repository.getBySubCategoryTop3("Fransar"));
         model.addAttribute("nails", repository.getBySubCategoryTop3("läppstift"));
         model.addAttribute("eyes", repository.getBySubCategoryTop3("Fransar"));
+        
+        boolean isLogedIn;
+        if(session.getAttribute("sessionCustomer") == null){
+            isLogedIn = false;
+        }else{
+            isLogedIn = true;
+        }
+        if(session.getAttribute("loginFail") == null){
+          //TODO FIX THIS SH.T
+          
+        }else{
+            model.addAttribute("loginFail",session.getAttribute("loginFail"));
+        }
+        model.addAttribute("isLogedIn",isLogedIn);
         return "index";
-
     }
 
     @GetMapping("/login")
@@ -38,12 +52,14 @@ public class FancyController {
     public String login(Model model, HttpSession session, @RequestParam String email, @RequestParam String password) {
         Customer customer = repository.loginCustomer(email,password);
         if (customer == null){
-            model.addAttribute("errorString","Email or Password does not exist");
-            return "login";
+            String loginFail = "Inloggning misslyckades";
+            session.setAttribute("loginFail",loginFail);
+            return "redirect:/";
         }
         else{
             session.setAttribute("sessionCustomer",customer);
-            return "index"; //TODO make it return page you were on
+            session.removeAttribute("loginFail");
+            return "redirect:/"; //TODO make it return page you were on
         }
     }
 
@@ -62,7 +78,14 @@ public class FancyController {
     @GetMapping("/logout")
     public String logout(Model model, HttpSession session) {
 
-        return "index"; //TODO make it return page you were on
+        return "redirect:/"; //TODO make it return page you were on
+    }
+
+    @PostMapping("/logout")
+    public String logoutPost(HttpSession session){
+        //TODO cookies and stuff
+        session.removeAttribute("sessionCustomer");
+        return "redirect:/";
     }
 
     @GetMapping("/registration")

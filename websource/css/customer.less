@@ -48,27 +48,16 @@
     background-size: 85%;
     background-position: center;
 }
-body{
-    height: 100%;
-    max-width: 1200px;
-}
 #menubar{
     display: flex;
     flex-direction: column;
+
     width: 60%;
     margin: auto;
     text-align: center;
-    justify-content: space-around;
+    justify-content: space-between;
     border: 20px;
     max-height: 100%;
-    cursor: pointer;
-}
-#menu{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-
 }
 #cartbox{
     display: flex;
@@ -96,121 +85,46 @@ body{
     width: 20%;
     margin: auto;
     max-height: 100%;
-    padding-left: 5%;
-
 }
 #logo{
     width: 100%;
     margin: auto;
     max-height: 100%;
-    cursor: pointer;
 }
 #footer{
     bottom: 0px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     background-color: @brown;
     border: 1px solid @brown;
     padding: 40px 0px;
     width: 100%;
     max-height: 5%;
 }
-// why did I need to have the styling on the section and not on the div footer??
-.foot{
-    bottom: 0px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: @brown;
-    border: 1px solid @brown;
-    padding: 40px 0px;
-    width: 100%;
-    max-height: 5%;
-
-}
-.shopsection{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 25%;
-}
-.informationsection{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 25%;
-}
-.socialsection{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 25%;
-}
-.helpsection{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 25%;
-}
-
 #pageContent{
-    display: flex;
-    flex-direction: row;
-    //justify-content: center;
     font-family: Arial, Helvetica, sans-serif; //our type!!!!!
     font-size: 18px;
     background-color: @dirtyWhite;
     min-height: 800px;
-}
-#mainPage{
-    max-width:100%;
-    
-    flex-direction: column;
-    justify-content: center;
-    background-color: @dirtyWhite;
-    flex-grow: 1;
-    border: 2px solid @lightPurple;
-}
-.recommendedProduct{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-.recommendedCategory{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: auto;
-
-}
-#julkalender{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-family: 'Mountains of Christmas', cursive; //OUR TYPW!!!
-    background-color: rgba(255, 0, 0, 0.507);
-    max-width: 100%;
-    margin-top: auto;
+}
+#mainpage{
+    max-width:100%;
+    background-color: @dirtyWhite;
+    border: 2px solid @lightPurple;
+    flex: 4;
+    order: 2;
 }
 #subcategoryMenu{
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    max-width: 20%;
-    max-height: 100%;
+    flex: 1;
+    order: 1;
     background-color: @dirtyWhite;
     border: 2px solid @lightPurple;
-
 }
 #topsellers{
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    max-width: 20%;
-    max-height: 100%;
+    flex: 1;
+    order: 3;
     background-color: @dirtyWhite;
     border: 2px solid @lightPurple;
 }
- 
- 
