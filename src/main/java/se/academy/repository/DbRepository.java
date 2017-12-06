@@ -98,7 +98,6 @@ public class DbRepository {
         }
         return null;
     }
-
     public boolean checkIfCustomerExist(Customer customer) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement statement = conn.prepareStatement("SELECT * FROM customer WHERE email = ?;")) {
@@ -110,6 +109,7 @@ public class DbRepository {
                 return true;
             }
         } catch (SQLException e) {
+           e.printStackTrace();
             System.err.print("Error");
         }
         return true;
