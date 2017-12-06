@@ -44,7 +44,6 @@ public class DbRepository {
         }
         return false;
     }
-
     public Product getProduct(int id) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement statement = conn.prepareStatement("SELECT * FROM products WHERE productID = (?)")) {
@@ -146,31 +145,22 @@ public class DbRepository {
         return null;
     }
 
-    public boolean removeCustomer(String email) {
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement statement = conn.prepareStatement("DELETE FROM customer WHERE email = (?)")) {
-            statement.setString(1, email);
-            int rs = statement.executeUpdate();
-            if (rs == 1) {
-                return true;
-            }
-        } catch (SQLException e) {
-            System.err.println("ERROR IN getProduct");
-            e.printStackTrace();
+
+    public Queue <Product> getBySubCategory(String category){
+            Queue<Product> products = getHelper("SELECT * FROM products WHERE subcategory = (?)", category);
+            return products;
         }
-        return false;
-    }
 
-    public Queue<Product> getBySubCategory(String category) {
+    public Queue <Product> getHelper(String sqlStatement, String category) {
 
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement statement = conn.prepareStatement("SELECT * FROM products WHERE subcategory = (?)")) {
+
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement statement = conn.prepareStatement(sqlStatement)){
             statement.setString(1, category);
-
             ResultSet resultSet = statement.executeQuery();
-            Queue<Product> products = new LinkedList<>();
-            while (resultSet.next()) {
-                Product product = new Product(
+            Queue <Product> products = new LinkedList<>();
+            while (resultSet.next()){
+               Product product = new Product(
                         resultSet.getInt("productID"),
                         resultSet.getString("name"),
                         resultSet.getDouble("price"),
@@ -188,7 +178,31 @@ public class DbRepository {
         }
         return null;
     }
+    public boolean removeCustomer(String email) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement statement = conn.prepareStatement("DELETE FROM customer WHERE email = (?)")) {
+            statement.setString(1, email);
+            int rs = statement.executeUpdate();
+            if (rs == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.err.println("ERROR IN getProduct");
+            e.printStackTrace();
+        }
+        return false;
+    }
 
+               
+
+
+
+    public Queue <Product> getBySubCategoryTop3(String category) {
+
+        Queue<Product> products = getHelper("SELECT TOP (3) * FROM products WHERE subcategory = (?)", category);
+        return products;
+    }
+    
     public Queue<Product> getByCategory(String category) {
         Queue<Product> products = getHelper("SELECT * FROM products WHERE category = (?)");
         return products;
@@ -208,5 +222,30 @@ public class DbRepository {
             products.add(product);
         }
         return products;
+    }
+
+    public Product getProduct(int productID) {
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement statement = conn.prepareStatement("SELECT * FROM products WHERE productID = (?)")){
+            statement.setInt(1, productID);
+            ResultSet rs = statement.executeQuery();
+           Product product;
+            while(rs.next()){
+                 product = new Product(
+                        rs.getInt("productID"),
+                        rs.getString("name"),
+                        rs.getDouble("price"),
+                        rs.getString("description"),
+                        rs.getString("image"),
+                        rs.getString("category"),
+                        rs.getString("subcategory"),
+                        rs.getInt("quantity")
+                );
+                return product;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

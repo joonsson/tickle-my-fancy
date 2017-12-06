@@ -23,7 +23,7 @@
 
         </div>
         <div id="menu">
-            <span>category1</span>
+            <span>Fransar</span>
             <span>category2</span>
             <span>category3</span>
             <span>category4</span>
@@ -76,20 +76,41 @@
             <h3>Makeup</h3>
         </div>
         <div class="recommendedProduct" id="makeup">
+            <div th:each="product : ${makeUp}">
+                <p>
+                    <a th:href="'/productinfo?productID='+${product.productID}" th:text="${product.name}"></a>
+                </p>
+                <p th:text="${product.image}"></p>
+                <p th:text="${product.price +' kr'}">kr</p>
+                <p th:text="${product.description}"></p>
+
+            </div>
         </div>
 
         <div class="recommendedCategory">
             <h3>Nail</h3>
         </div>
         <div class="recommendedProduct" id="nails">
+            <div th:each="product : ${nails}">
+                <p>
+                    <a th:href="'/productinfo?productID='+${product.productID}" th:text="${product.name}"></a>
+                </p>
+                <p th:text="${product.image}"></p>
+                <p th:text="${product.price +' kr'}">kr</p>
+                <p th:text="${product.description}"></p>
+
+            </div>
         </div>
         <div class="recommendedCategory">
             <h3>Eyes</h3>
         </div>
         <div class="recommendedProduct" id="eyes">
-            <div th:each="product : ${products}">
-                <p th:text="${product.name}"></p>
-                <p th:text="${product.price}">kr</p>
+            <div th:each="product : ${eyes}">
+                <p>
+                    <a th:href="'/productinfo?productID='+${product.productID}" th:text="${product.name}"></a>
+                </p>
+                <p th:text="${product.image}"></p>
+                <p th:text="${product.price +' kr'}">kr</p>
                 <p th:text="${product.description}"></p>
 
             </div>
@@ -97,6 +118,14 @@
     </div>
     <div id="topsellers">
         <p>here we will have a list of our topsellers</p>
+        <div th:each="product : ${nails}">
+            <p>
+                <a th:href="'/productinfo?productID='+${product.productID}" th:text="${product.name}"></a>
+            </p>
+            <p th:text="${product.image}"></p>
+            <p th:text="${product.price +' kr'}">kr</p>
+
+        </div>
     </div>
 
 </section>
