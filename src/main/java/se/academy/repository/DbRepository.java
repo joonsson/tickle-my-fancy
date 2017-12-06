@@ -44,31 +44,6 @@ public class DbRepository {
         }
         return false;
     }
-    public Product getProduct(int id) {
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement statement = conn.prepareStatement("SELECT * FROM products WHERE productID = (?)")) {
-            statement.setInt(1, id);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                Product product = new Product
-                        (rs.getInt("productID"),
-                                rs.getString("name"),
-                                rs.getDouble("price"),
-                                rs.getString("description"),
-                                rs.getString("image"),
-                                rs.getString("category"),
-                                rs.getString("subcategory"),
-                                rs.getInt("quantity"));
-                return product;
-            } else {
-                return null;
-            }
-        } catch (SQLException e) {
-            System.err.println("ERROR IN getProduct");
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     public Customer loginCustomer(String email, String password) {
         try (Connection conn = dataSource.getConnection();
