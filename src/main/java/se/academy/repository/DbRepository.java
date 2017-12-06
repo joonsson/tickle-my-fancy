@@ -23,17 +23,17 @@ public class DbRepository {
 
     }
 
-    public boolean registerCustomer(String email, String password, String firstName, String lastName, String address, String zip, String city, String phone) {
+    public boolean registerCustomer(Customer customer) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement statement = conn.prepareStatement("INSERT INTO customer(email,password,firstName,lastName,address,zip,city,phone) VALUES (?,?,?,?,?,?,?,?);")) {
-            statement.setString(1, email);
-            statement.setString(2, password);
-            statement.setString(3, firstName);
-            statement.setString(4, lastName);
-            statement.setString(5, address);
-            statement.setString(6, zip);
-            statement.setString(7, city);
-            statement.setString(8, phone);
+            statement.setString(1, customer.getEmail());
+            statement.setString(2, customer.getPassword());
+            statement.setString(3, customer.getFirstname());
+            statement.setString(4, customer.getLastname());
+            statement.setString(5, customer.getAddress());
+            statement.setString(6, customer.getZip());
+            statement.setString(7, customer.getCity());
+            statement.setString(8, customer.getPhone());
             int result = statement.executeUpdate();
 
             if (result == 1) {
@@ -97,12 +97,6 @@ public class DbRepository {
             e.printStackTrace();
         }
         return null;
-    }
-
-    catch (SQLException e){
-        System.err.println("ERROR IN loginCustomer");
-    }
-    return null;
     }
 
     public boolean checkIfCustomerExist(Customer customer){
@@ -183,6 +177,7 @@ public class DbRepository {
                     resultSet.getString("description"),
                     resultSet.getString("image"),
                     resultSet.getString("category"),
+                    resultSet.getString("subcategory"),
                     resultSet.getInt("quantity")
             );
             products.add(product);

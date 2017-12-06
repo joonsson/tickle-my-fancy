@@ -52,7 +52,7 @@ public class ControllerApplicationTests {
 
 	@Test
 	public void customerTests() {
-		boolean success = repository.registerCustomer("test@test.com", "test", " ", " ", " ", " ", " ", " ");
+		boolean success = repository.registerCustomer(new Customer("test@test.com", "test", " ", " ", " ", " ", " ", " "));
 		Assert.isTrue(success, "Registration must be successful");
 
 		Customer customer = repository.loginCustomer("test@test.com", "test");
