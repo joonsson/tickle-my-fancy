@@ -1,0 +1,394 @@
+$dk-blue: #003154;
+$md-blue: #64A9EA;
+$white: #E7F4FA;
+$black: #0C1110;
+
+*, html, body {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: $white;
+  overflow-x: hidden;
+  font-family: 'Lato', sans-serif;
+  color: $black;
+}
+
+.background {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient($dk-blue, $md-blue) no-repeat;
+}
+
+.foreground {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+	opacity: .99;
+}
+
+svg.background__ground {
+  position: absolute;
+  bottom: 0;
+  @media screen and (min-width: 1100px) {
+    bottom: -2em;
+  }
+  @media screen and (min-width: 1400px) {
+    bottom: -4em;
+  }
+}
+
+#snowman {
+  width: 18em;
+  position: absolute;
+  bottom: 0;
+  margin: 1em;
+  @media screen and (min-width: 720px) {
+    bottom: 3em;
+    left: 2em;
+  }
+  @media screen and (min-width: 900px) {
+    bottom: 5em;
+    left: 3em;
+  }
+  @media screen and (min-width: 1100px) {
+    left: 5em;
+  }
+  @media screen and (min-width: 1500px) {
+    bottom: 8em;
+  }
+}
+
+g.background__snowman {
+  animation: rock 6s ease-in-out 2s infinite;
+  transform-origin: 50% 100%;
+}
+
+#snowflakes {
+}
+
+.container--snowflakes {
+  max-width: 1200px;
+  margin: 3em auto 1em auto;
+}
+
+#snowflakes-1 {
+  opacity: 0;
+  animation: snowfall 2.2s ease-out 1s infinite;
+}
+
+#snowflakes-2 {
+  opacity: 0;
+  animation: snowfall 2.5s ease-out .7s infinite;
+}
+
+#snowflakes-3 {
+  opacity: 0;
+  animation: snowfall 3s ease-out 1.2s infinite;
+}
+
+#snowflakes-4 {
+  opacity: 0;
+  animation: snowfall 2.8s ease-out .8s infinite;
+}
+
+@keyframes snowfall {
+  0% { opacity: 0; }
+  40% { opacity: 1; }
+  70% { opacity: 0;  }
+  100% { transform: translate(-2em, 10em); }
+}
+
+@keyframes rock {
+  0% { transform: rotate(0); }
+  60% { transform: rotate(-2deg); }
+  80% { transform: rotate(1deg); }
+  100% { transform: rotate(0); }
+}
+
+/* Foreground styles */
+
+h1 {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 1em;
+}
+
+.about {
+  display: block;
+  max-width: 8em;
+  float: right;
+  padding: 1em;
+  text-transform: uppercase;
+	text-decoration: none;
+  letter-spacing: .06em;
+  cursor: pointer;
+  text-align: center;
+  font-size: .9em;
+  background-color: darken($dk-blue, 3%);
+  color: $md-blue;
+  border-radius: .5em;
+  margin: 1em;
+}
+
+.wrapper--header {
+  clear: both;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 52em;
+  margin: 0 auto;
+  padding: 1em;
+  z-index: -10000000;
+  text-align: center;
+  h1 {
+    color: $white;
+    text-shadow: -.1em .1em .5em $dk-blue;
+  }
+  h2 {
+    color: darken($dk-blue, 5%);
+  }
+}
+
+.wrapper--main {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+}
+
+.card-wrapper,
+.card-face,
+.card-under {
+  width: 10em;
+  height: 10em;
+}
+
+.card-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.card {
+  z-index: 100;
+}
+
+.card-face {
+  position: absolute;
+  overflow: hidden;
+  border-radius: .5em;
+  z-index: 200;
+}
+
+.front {
+  background: linear-gradient(45deg, $dk-blue, $md-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-size: 3em;
+    color: $dk-blue;
+  }
+}
+
+.back {
+  background-color: darken($dk-blue, 5%);
+}
+
+.card-under {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $dk-blue;
+  z-index: 0;
+  border-radius: .5em;
+  box-shadow: -.3em .3em .2em darken($dk-blue, 5%) inset;
+}
+
+.front {
+  border-top: 2px solid $md-blue;
+  border-right: 2px solid $md-blue;
+  border-bottom: 2px solid $dk-blue;
+  border-left: 2px solid $dk-blue;
+}
+
+.card-under {
+  border-top: 2px solid darken($dk-blue, 5%);
+  border-right: 2px solid darken($dk-blue, 5%);
+  border-bottom: 2px solid darken($dk-blue, 5%);
+}
+
+.card__contents {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999999999;
+  .contents__wrapper {
+    position: relative;
+    max-width: 40em;
+    margin: 0 auto;
+    background-color: $white;
+    padding: 2em;
+    border: 1px solid darken($white, 10%);
+    box-shadow: -.1em .1em .5em $dk-blue;
+  }
+  p {
+    line-height: 1.4;
+  }
+  a {
+    color: $md-blue;
+    &.article__link {
+      padding: .5em;
+      background-color: $md-blue;
+      border-radius: .3em;
+      color: $white;
+      text-decoration: none;
+      transition: all .2s ease-in-out;
+      &:focus, &:hover, &:active {
+        background-color: $dk-blue;
+        color: $white;
+      }
+    }
+    &:focus, &:hover, &:active {
+      color: $dk-blue;
+    }
+  }
+  a.close {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    cursor: pointer;
+    padding: .2em;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid $md-blue;
+    font-weight: 700;
+    transition: all .2s ease-in-out;
+    &:focus, &:hover, &:active {
+      border: 2px solid $dk-blue;
+    }
+  }
+  #holly {
+    position: absolute;
+    top: -1em;
+    left: -.5em;
+    width: 6em;
+  }
+}
+
+.arrow {
+  display: block;
+  width: 2.5em;
+  height: 2.5em;
+	cursor: pointer;
+	fill: $dk-blue;
+  opacity: .5;
+	transition: all .3s ease-in-out;
+	&:focus, &:hover, &:active {
+		opacity: 1;
+	}
+}
+
+.text-box {
+	position: absolute;
+	top: 45vh;
+	width: 100%;
+	text-align: center;
+	p {
+		max-width: 20em;
+		margin: 0 auto;
+		background-color: orange;
+		padding: 1em;
+		border-radius: .2em;
+		box-shadow: -.1em .1em .5em $dk-blue;
+	}
+}
+
+
+/* Tablet styles */
+
+@media screen and (min-width: 22em) {
+  
+  .card-wrapper,
+  .card-face,
+  .card-under {
+    width: 12em;
+    height: 12em;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  
+  .wrapper--header,
+  .wrapper--main {
+    padding: 1em 2em;
+  }
+  
+  h1 {
+    font-size: 2.2em;
+  }
+  
+  h2 {
+    font-size: 1.1em;
+  }
+  
+  .card-wrapper,
+  .card-face,
+  .card-under {
+    width: 16em;
+    height: 16em;
+  }
+  
+  .front {
+    h1 {
+      font-size: 5em;
+    }
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  
+  h1 {
+    font-size: 2.8em;
+    margin-bottom: .5em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .card-wrapper,
+  .card-face,
+  .card-under {
+    width: 22em;
+    height: 22em;
+  }
+  .wrapper--header {
+    padding: 2em;
+  }
+  
+  h1 {
+    font-size: 3.4em;
+    margin-bottom: .5em;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+}
