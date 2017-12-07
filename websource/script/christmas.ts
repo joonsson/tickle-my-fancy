@@ -1,5 +1,5 @@
-const mariah = new Audio("MariahCarey.mp3");
-const fariydust = new Audio("Fairydust.mp3");
+const mariah = new Audio("./sound/MariahCarey.mp3");
+const fariydust = new Audio("./sound/Fairydust.mp3");
 document.addEventListener("DOMContentLoaded", (event) => {
     mariah.play();
     const card = document.getElementsByClassName("card")[0];

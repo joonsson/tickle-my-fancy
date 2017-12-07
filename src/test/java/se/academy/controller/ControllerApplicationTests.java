@@ -14,7 +14,7 @@ import java.util.Queue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ControllerApplicationTes	ts {
+public class ControllerApplicationTests {
 	@Autowired
 	private DbRepository repository;
 
