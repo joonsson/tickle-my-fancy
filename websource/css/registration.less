@@ -1,0 +1,151 @@
+
+@deepPurple:#7B008D;
+@lightPurple:#C18DB2;
+@yellow:#F3B606;
+@brown:#56320F;
+@dirtyWhite:#D8C5AA;
+
+#header{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-height: 10%;
+  background: linear-gradient(to bottom right,@lightPurple 20% , @deepPurple, @yellow 95%);
+  color: @dirtyWhite;
+}
+#searchbar{
+  width: 100%;
+  position: relative;
+  top: 0;
+}
+.searchTerm {
+  float: left;
+  width: 85%;
+  border: 3px solid @lightPurple;
+  border-radius: 5px;
+  padding: 5px;
+  height: 20px;
+  outline: none;
+  color: @dirtyWhite;
+}
+.searchTerm:focus{
+  color: @deepPurple;
+}
+.searchButton {
+  cursor: pointer;
+  width: 40px;
+  height: 36px;
+
+  border: 1px solid @deepPurple;
+  border-radius: 5px;
+  text-align: center;
+  background: @lightPurple;
+  color: @brown;
+
+  font-size: 20px;
+  background-image: url(https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-128.png);
+  background-size: 85%;
+  background-position: center;
+}
+#menubar{
+  display: flex;
+  flex-direction: column;
+
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  justify-content: space-between;
+  border: 20px;
+  max-height: 100%;
+}
+#cartbox{
+  display: flex;
+  flex-direction: row;
+  color:black;
+  width: 20%;
+  margin: auto;
+  max-height: 100%;
+
+  justify-content: center;
+  cursor: pointer;
+}
+#loginlogo{
+  margin: auto;
+  width: 50%;
+  max-height: 100%;
+}
+#cartlogo{
+  margin: auto;
+  max-height: 100%;
+  width: 50%;
+}
+#logoDiv{
+  color: white;
+  width: 20%;
+  margin: auto;
+  max-height: 100%;
+}
+#logo{
+  width: 100%;
+  margin: auto;
+  max-height: 100%;
+}
+#footer{
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: @brown;
+  border: 1px solid @brown;
+  padding: 40px 0px;
+  width: 100%;
+  max-height: 5%;
+}
+#pageContent{
+  font-family: Arial, Helvetica, sans-serif; //our type!!!!!
+  font-size: 18px;
+  background-color: @dirtyWhite;
+  min-height: 800px;
+  display: flex;
+}
+#mainpage{
+  max-width:100%;
+  background-color: @dirtyWhite;
+  border: 2px solid @lightPurple;
+  flex: 4;
+  order: 2;
+  display: flex;
+}
+
+#mainpage>div{
+  background-color: @yellow;
+}
+#regtext{
+  width: 50%;
+  text-align: right;
+}
+#generateForm{
+  width: 50%;
+  text-align: left;
+}
+.input{
+  min-height: 40px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+#subcategoryMenu{
+  flex: 1;
+  order: 1;
+  background-color: @dirtyWhite;
+  border: 2px solid @lightPurple;
+}
+#topsellers{
+  flex: 1;
+  order: 3;
+  background-color: @dirtyWhite;
+  border: 2px solid @lightPurple;
+}
+
+h1{
+  padding: 5px;
+}
