@@ -13,6 +13,7 @@
     <title>Beauty and the beasts</title>
 
 </head>
+
 <body>
 
 
@@ -35,20 +36,6 @@
                 <span>category4</span>
                 <span>category5</span>
             </div>
-    </div>
-    <div id="cartbox">
-        <!-- here we have som links to both the login in site and to the cart. these doesn't need to be links, we can use SPA if we want. -->
-        <div th:if="${isLogedIn} == false">
-            <form action="/login" method="post">
-                <div>E-postadress:</div>
-                <input name="email" type="text" />
-                <div>Lösenord:</div>
-                 <input name="password" type="password" />
-                <input type="submit" value="Logga in"/>
-                <div th:text="${loginFail}"></div>
-                <div><a href="registration.html">Skapa nytt konto</a></div>
-            </form>
-
         </div>
         <div id="cartbox">
             <!-- here we have som links to both the login in site and to the cart. these doesn't need to be links, we can use SPA if we want. -->
@@ -246,34 +233,34 @@
             </div>
 
 
-        <div class="recommendedCategory">
-            <h3>Makeup</h3>
-        </div>
-        <div class="recommendedProduct" id="makeup">
-            <div th:each="product : ${makeUp}">
-                <p>
-                    <a th:href="'/productinfo?productID='+${product.productID}" th:text="${product.name}"></a>
-                </p>
-                <img class="productpic" th:src="${product.image}"/>
-                <p th:text="${product.price +' kr'}">kr</p>
-                <p class="productdescription" th:text="${product.description}"></p>
+            <div class="recommendedCategory">
+                <h3>Makeup</h3>
+            </div>
+            <div class="recommendedProduct" id="makeup">
+                <div th:each="product : ${makeUp}">
+                    <p>
+                        <a th:href="'/productinfo?productID='+${product.productID}" th:text="${product.name}"></a>
+                    </p>
+                    <img class="productpic" th:src="${product.image}" />
+                    <p th:text="${product.price +' kr'}">kr</p>
+                    <p class="productdescription" th:text="${product.description}"></p>
 
 
                 </div>
             </div>
 
 
-        <div class="recommendedCategory">
-            <h3>Nail</h3>
-        </div>
-        <div class="recommendedProduct" id="nails">
-            <div th:each="product : ${nails}">
-                <p>
-                    <a th:href="'/productinfo?productID='+${product.productID}" th:text="${product.name}"></a>
-                </p>
-                <img class="productpic" th:src="${product.image}"/>
-                <p th:text="${product.price +' kr'}">kr</p>
-                <p class="productdescription" th:text="${product.description}"></p>
+            <div class="recommendedCategory">
+                <h3>Nail</h3>
+            </div>
+            <div class="recommendedProduct" id="nails">
+                <div th:each="product : ${nails}">
+                    <p>
+                        <a th:href="'/productinfo?productID='+${product.productID}" th:text="${product.name}"></a>
+                    </p>
+                    <img class="productpic" th:src="${product.image}" />
+                    <p th:text="${product.price +' kr'}">kr</p>
+                    <p class="productdescription" th:text="${product.description}"></p>
 
 
                 </div>
@@ -293,34 +280,17 @@
                 </div>
             </div>
         </div>
+        <div id="topsellers">
+            <p> Our topsellers</p>
+            <div th:each="product : ${nails}">
+                <p>
+                    <a th:href="'/productinfo?productID='+${product.productID}" th:text="${product.name}"></a>
+                </p>
+                <img class="productpic" th:src="${product.image}" />
+                <p th:text="${product.price +' kr'}">kr</p>
+
             </div>
         </div>
-    </div>
-    <div id="topsellers">
-        <p> Our topsellers</p>
-        <div th:each="product : ${nails}">
-            <p>
-                <a th:href="'/productinfo?productID='+${product.productID}" th:text="${product.name}"></a>
-            </p>
-            <img class="productpic" th:src="${product.image}"/>
-            <p th:text="${product.price +' kr'}">kr</p>
-
-        </div>
-    </div>
-
-</section>
-<div id="footer">
-    <section class="foot">
-        <div class="shopsection">
-            <ul id="shop">SHOP</ul>
-            <li>Women</li>
-            <li>Men</li>
-            <li>Makeup</li>
-            <li>lipstift</li>
-        </div>
-            </div>
-        </div>
-
 
     </section>
     <div id="footer">
