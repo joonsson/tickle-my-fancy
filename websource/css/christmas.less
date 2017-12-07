@@ -1,7 +1,7 @@
-$dk-blue: #003154;
-$md-blue: #64A9EA;
-$white: #E7F4FA;
-$black: #0C1110;
+@dk-blue: #003154;
+@md-blue: #64A9EA;
+@white: #E7F4FA;
+@black: #0C1110;
 
 *, html, body {
   box-sizing: border-box;
@@ -9,10 +9,10 @@ $black: #0C1110;
 
 body {
   height: 100vh;
-  background-color: $white;
+  background-color: @white;
   overflow-x: hidden;
   font-family: 'Lato', sans-serif;
-  color: $black;
+  color: @black;
 }
 
 .background {
@@ -21,7 +21,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient($dk-blue, $md-blue) no-repeat;
+  background: linear-gradient(@dk-blue, @md-blue) no-repeat;
 }
 
 .foreground {
@@ -67,9 +67,6 @@ svg.background__ground {
 g.background__snowman {
   animation: rock 6s ease-in-out 2s infinite;
   transform-origin: 50% 100%;
-}
-
-#snowflakes {
 }
 
 .container--snowflakes {
@@ -135,8 +132,8 @@ h2 {
   cursor: pointer;
   text-align: center;
   font-size: .9em;
-  background-color: darken($dk-blue, 3%);
-  color: $md-blue;
+  background-color: darken(@dk-blue, 3%);
+  color: @md-blue;
   border-radius: .5em;
   margin: 1em;
 }
@@ -152,11 +149,11 @@ h2 {
   z-index: -10000000;
   text-align: center;
   h1 {
-    color: $white;
-    text-shadow: -.1em .1em .5em $dk-blue;
+    color: @white;
+    text-shadow: -.1em .1em .5em @dk-blue;
   }
   h2 {
-    color: darken($dk-blue, 5%);
+    color: darken(@dk-blue, 5%);
   }
 }
 
@@ -193,41 +190,35 @@ h2 {
 }
 
 .front {
-  background: linear-gradient(45deg, $dk-blue, $md-blue);
+  background: linear-gradient(45deg, @dk-blue, @md-blue);
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 2px solid @md-blue;
+  border-right: 2px solid @md-blue;
+  border-bottom: 2px solid @dk-blue;
+  border-left: 2px solid @dk-blue;
   h1 {
     font-size: 3em;
-    color: $dk-blue;
+    color: @dk-blue;
   }
 }
 
 .back {
-  background-color: darken($dk-blue, 5%);
+  background-color: darken(@dk-blue, 5%);
 }
 
 .card-under {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: $dk-blue;
+  background-color: @dk-blue;
   z-index: 0;
   border-radius: .5em;
-  box-shadow: -.3em .3em .2em darken($dk-blue, 5%) inset;
-}
-
-.front {
-  border-top: 2px solid $md-blue;
-  border-right: 2px solid $md-blue;
-  border-bottom: 2px solid $dk-blue;
-  border-left: 2px solid $dk-blue;
-}
-
-.card-under {
-  border-top: 2px solid darken($dk-blue, 5%);
-  border-right: 2px solid darken($dk-blue, 5%);
-  border-bottom: 2px solid darken($dk-blue, 5%);
+  box-shadow: -.3em .3em .2em darken(@dk-blue, 5%) inset;
+  border-top: 2px solid darken(@dk-blue, 5%);
+  border-right: 2px solid darken(@dk-blue, 5%);
+  border-bottom: 2px solid darken(@dk-blue, 5%);
 }
 
 .card__contents {
@@ -241,30 +232,30 @@ h2 {
     position: relative;
     max-width: 40em;
     margin: 0 auto;
-    background-color: $white;
+    background-color: @white;
     padding: 2em;
-    border: 1px solid darken($white, 10%);
-    box-shadow: -.1em .1em .5em $dk-blue;
+    border: 1px solid darken(@white, 10%);
+    box-shadow: -.1em .1em .5em @dk-blue;
   }
   p {
     line-height: 1.4;
   }
   a {
-    color: $md-blue;
+    color: @md-blue;
     &.article__link {
       padding: .5em;
-      background-color: $md-blue;
+      background-color: @md-blue;
       border-radius: .3em;
-      color: $white;
+      color: @white;
       text-decoration: none;
       transition: all .2s ease-in-out;
       &:focus, &:hover, &:active {
-        background-color: $dk-blue;
-        color: $white;
+        background-color: @dk-blue;
+        color: @white;
       }
     }
     &:focus, &:hover, &:active {
-      color: $dk-blue;
+      color: @dk-blue;
     }
   }
   a.close {
@@ -277,11 +268,11 @@ h2 {
     height: 2em;
     text-align: center;
     border-radius: 50%;
-    border: 2px solid $md-blue;
+    border: 2px solid @md-blue;
     font-weight: 700;
     transition: all .2s ease-in-out;
     &:focus, &:hover, &:active {
-      border: 2px solid $dk-blue;
+      border: 2px solid @dk-blue;
     }
   }
   #holly {
@@ -297,7 +288,7 @@ h2 {
   width: 2.5em;
   height: 2.5em;
 	cursor: pointer;
-	fill: $dk-blue;
+	fill: @dk-blue;
   opacity: .5;
 	transition: all .3s ease-in-out;
 	&:focus, &:hover, &:active {
@@ -316,7 +307,7 @@ h2 {
 		background-color: orange;
 		padding: 1em;
 		border-radius: .2em;
-		box-shadow: -.1em .1em .5em $dk-blue;
+		box-shadow: -.1em .1em .5em @dk-blue;
 	}
 }
 
