@@ -11,8 +11,8 @@
     "lessproduct": "lessc websource/css/productinfo.less src/main/resources/static/css/productinfo.css",
     "styleless": "lessc websource/css/style.less src/main/resources/static/css/style.css",
     "customerless": "lessc websource/css/customer.less src/main/resources/static/css/customer.css",
-    "less": "npm run styleless && npm run customerless && npm run lessproduct",
-
+    "christmasless": "lessc websource/css/christmas.less src/main/resources/static/css/christmas.css",
+    "less": "npm run styleless && npm run customerless && npm run lessproduct && npm run christmasless",
     "bundle": "webpack",
     "build": "npm run lint && npm run bundle && npm run less"
   },
