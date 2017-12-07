@@ -26,7 +26,7 @@ public class FancyController {
         model.addAttribute("makeUp", repository.getBySubCategoryTop3("Fransar"));
         model.addAttribute("nails", repository.getBySubCategoryTop3("läppstift"));
         model.addAttribute("eyes", repository.getBySubCategoryTop3("Fransar"));
-        
+
         boolean isLogedIn;
         if(session.getAttribute("sessionCustomer") == null){
             isLogedIn = false;

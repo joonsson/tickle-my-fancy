@@ -24,6 +24,7 @@ nbdist/
 .nb-gradle/
 
 application.properties
+application.properties
 node_modules
 
 *.css
