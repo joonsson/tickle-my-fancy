@@ -17,7 +17,7 @@
     "christmasless": "lessc websource/css/christmas.less src/main/resources/static/css/christmas.css",
     "less": "npm run styleless && npm run customerless && npm run lessproduct && npm run christmasless",
     "bundle": "webpack",
-    "prepublish": "npm run build",
+    "start": "npm run build",
     "build": "npm run lint && npm run bundle && npm run less"
   },
   "repository": {
