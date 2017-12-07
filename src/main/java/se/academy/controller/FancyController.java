@@ -32,10 +32,7 @@ public class FancyController {
         }else{
             isLogedIn = true;
         }
-        if(session.getAttribute("loginFail") == null){
-          //TODO FIX THIS SH.T
-          
-        }else{
+        if(session.getAttribute("loginFail") != null){
             model.addAttribute("loginFail",session.getAttribute("loginFail"));
         }
         model.addAttribute("isLogedIn",isLogedIn);
