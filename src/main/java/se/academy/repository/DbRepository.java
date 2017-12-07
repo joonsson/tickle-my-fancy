@@ -43,7 +43,7 @@ public class DbRepository {
             System.err.println("ERROR IN registerCustomer");
         }
         return false;
-    }
+    }   
 
     public Customer loginCustomer(String email, String password) {
         try (Connection conn = dataSource.getConnection();
