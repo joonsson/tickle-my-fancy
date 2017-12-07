@@ -26,10 +26,6 @@ public class FancyController {
         model.addAttribute("nails", repository.getBySubCategoryTop3("läppstift"));
         model.addAttribute("eyes", repository.getBySubCategoryTop3("Fransar"));
 
-
-      // DO I REALLY NEED TO HAVE THIS IN A MODEL SINCE IT RETURNS A STRING??
-        model.addAttribute("image", repository.getImage(1));
-
         boolean isLogedIn;
         if(session.getAttribute("sessionCustomer") == null){
             isLogedIn = false;
