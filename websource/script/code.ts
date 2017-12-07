@@ -1,6 +1,7 @@
-let logo = document.getElementById("logo");
-let searchBtn = document.getElementById("searchButton");
-let searchTerm = document.getElementById("searchTerm");
+import "./christmas.ts";
+const logo = document.getElementById("logo");
+const searchBtn = document.getElementById("searchButton");
+const searchTerm = document.getElementById("searchTerm");
 
 logo.addEventListener("click", () => {
     window.location.href = "/";

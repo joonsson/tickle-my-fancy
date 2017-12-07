@@ -39,6 +39,11 @@ public class FancyController {
         return "index";
     }
 
+    @GetMapping("/christmas")
+    public String christmas(Model model, HttpSession session) {
+        return "christmas";
+    }
+
     @GetMapping("/login")
     public String logintest(HttpSession session){
         //TODO move login to indexpage?
