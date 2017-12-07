@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall ": "npm build",
+    "dev": "npm-run-build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lintless": "stylelint websource/css/*.less",
     "lintts": "tslint -c tslint.json 'websource/**/*.ts'",
