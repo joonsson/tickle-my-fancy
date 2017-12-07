@@ -43,7 +43,7 @@ public class DbRepository {
             System.err.println("ERROR IN registerCustomer");
         }
         return false;
-    }
+    }   
 
     public Customer loginCustomer(String email, String password) {
         try (Connection conn = dataSource.getConnection();
@@ -168,16 +168,13 @@ public class DbRepository {
         return false;
     }
 
-               
-
-
-
     public Queue <Product> getBySubCategoryTop3(String category) {
 
-        Queue<Product> products = getHelper("SELECT TOP (3) * FROM products WHERE subcategory = (?)", category);
+        Queue<Product> products = getHelper("SELECT TOP (3) products.[productID],[name],[price],[quantity],[subcategory],[category],[dbo].[imagetest].[image], [description] FROM products INNER JOIN imagetest ON [dbo].[products].[productID] = [dbo].[imagetest].[productID] WHERE subcategory = (?)", category);
         return products;
+
     }
-    
+
     public Queue<Product> getByCategory(String category) {
         Queue<Product> products = getHelper("SELECT * FROM products WHERE category = (?)", category);
         return products;
