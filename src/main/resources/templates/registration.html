@@ -2,44 +2,115 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="Stylesheet" href="./css/registration.css"/>
+    <style>@import url('https://fonts.googleapis.com/css?family=Mountains+of+Christmas');</style>
+    <title>Beauty and the beasts</title>
+
 </head>
 <body>
-
-<div class="generateForm">
-    <h1>Registrera</h1>
-    <div class="registrationInput">
-        <form action="#" th:action="@{/registration}" th:object="${customer}" method="post">
-            Email: <input type="text" th:field="*{email}" />
-            <p th:if="${#fields.hasErrors('email')}">Måste ange e-post</p>
-            <p th:text="${occupied}" ></p>
-
-            Password: <input type="password" th:field="*{password}"/>
-            <p th:if="${#fields.hasErrors('password')}">Lösenordet ska innehålla 5-15 tecken.</p>
-
-            Firstname: <input type="text" th:field="*{firstname}"/>
-            <p th:if="${#fields.hasErrors('firstname')}"></p>
-
-            Lastname: <input type="text" th:field="*{lastname}"/>
-            <p th:if="${#fields.hasErrors('lastname')}">Lastname Wrong!</p>
-
-            Address: <input type="text" th:field="*{address}"/>
-            <p th:if="${#fields.hasErrors('address')}">Address Wrong!</p>
-
-            Zip: <input type="text" th:field="*{zip}"/>
-            <p th:if="${#fields.hasErrors('zip')}">Zip Wrong!</p>
-
-            City: <input type="text" th:field="*{city}"/>
-            <p th:if="${#fields.hasErrors('city')}">Wrong!</p>
-
-            Phone: <input type="text" th:field="*{phone}"/>
-            <p th:if="${#fields.hasErrors('phone')}">City Wrong!</p>
-
-            <input type="submit" value="registrera"/>
-
-        </form>
+<header id="header">
+    <div id="logoDiv">
+        <img src="./img/logo.png" id="logo"/>
     </div>
-</div>
+    <div id="menubar">
+        <div id="searchbar">
+            <input type="text" class="searchTerm" placeholder="What are you looking for?"/>
+            <button type="submit" class="searchButton"> </button>
+        </div>
+        <div id="menu">
+            <span >category1</span>
+            <span >category2</span>
+            <span >category3</span>
+            <span >category4</span>
+            <span >category5</span>
+            <span >category6</span>
+        </div>
+    </div>
+    <div id="cartbox">
+        <!-- here we have som links to both the login in site and to the cart. these doesn't need to be links, we can use SPA if we want. -->
+        <div id="login"><a href="registration.html"><img src="../static/img/mypagelogo.png" id="mypagelogo"/></a></div>
+        <div id="cart" ><img src="../static/img/shopping-cart.png" id="cartlogo"/></div>
+    </div>
+</header>
 
+<section id="pageContent">
+
+    <div id="subcategoryMenu">
+        <p>
+            Here will we display a menu with subcategories
+        </p>
+    </div>
+    <div id="mainpage">
+
+            <div id="regtext">
+                <h1>Registrera</h1>
+                <div class="input">Email</div>
+                <div class="input">Lösenord</div>
+                <div class="input">Namn</div>
+                <div class="input">Efternamn</div>
+                <div class="input">Adress</div>
+                <div class="input">Postnummer</div>
+                <div class="input">Postort</div>
+                <div class="input">Telefon</div>
+            </div>
+
+            <div id="generateForm">
+
+                <div class="registrationInput">
+                    <h1> ny Kund</h1>
+                    <form action="#" th:action="@{/registration}" th:object="${customer}" method="post">
+                        <div class="input">
+                            <input type="text" th:field="*{email}" />
+                            <span th:if="${#fields.hasErrors('email')}">Måste ange e-post</span>
+                            <span th:text="${occupied}" ></span>
+                        </div>
+                        <div class="input">
+                            <input type="password" th:field="*{password}"/>
+                            <span th:if="${#fields.hasErrors('password')}">Lösenordet ska innehålla 5-15 tecken.</span>
+                        </div>
+                        <div class="input">
+                            <input type="text" th:field="*{firstname}"/>
+                            <span th:if="${#fields.hasErrors('firstname')}"></span>
+                        </div>
+                        <div class="input">
+                            <input type="text" th:field="*{lastname}"/>
+                            <span th:if="${#fields.hasErrors('lastname')}">Lastname Wrong!</span>
+                        </div>
+                        <div class="input">
+                            <input type="text" th:field="*{address}"/>
+                            <span th:if="${#fields.hasErrors('address')}">Address Wrong!</span>
+                        </div>
+                        <div class="input">
+                            <input type="text" th:field="*{zip}"/>
+                            <span th:if="${#fields.hasErrors('zip')}">Zip Wrong!</span>
+                        </div>
+                        <div class="input">
+                            <input type="text" th:field="*{city}"/>
+                            <span th:if="${#fields.hasErrors('city')}">Wrong!</span>
+                        </div>
+                        <div class="input">
+                            <input type="text" th:field="*{phone}"/>
+                            <span th:if="${#fields.hasErrors('phone')}">City Wrong!</span>
+                        </div>
+                        <input type="submit" value="registrera"/>
+
+                    </form>
+                </div>
+            </div>
+
+    </div>
+
+    <div id="topsellers">
+        <p>here we will have a list of our topsellers</p>
+    </div>
+
+</section>
+<div id="footer">
+    <p>some information about us</p>
+
+</div>
+<script src="./script/bundle.js"></script>
 </body>
 </html>
