@@ -3,30 +3,15 @@
 @white: #E7F4FA;
 @black: #0C1110;
 
-*, html, body {
-  box-sizing: border-box;
-}
-
-body {
-  height: 100vh;
-  background-color: @white;
-  overflow-x: hidden;
-  font-family: 'Lato', sans-serif;
-  color: @black;
-}
-
 .background {
   height: 100vh;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  max-width: 1200px;
   background: linear-gradient(@dk-blue, @md-blue) no-repeat;
 }
 
 .foreground {
   position: absolute;
-  top: 0;
   width: 100%;
   z-index: 1000;
 	opacity: .99;
@@ -121,7 +106,7 @@ h2 {
   font-size: 1em;
 }
 
-.about {
+#about {
   display: block;
   max-width: 8em;
   float: right;
