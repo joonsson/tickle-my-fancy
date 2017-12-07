@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "8.9.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lintless": "stylelint websource/css/*.less",
@@ -14,6 +17,7 @@
     "christmasless": "lessc websource/css/christmas.less src/main/resources/static/css/christmas.css",
     "less": "npm run styleless && npm run customerless && npm run lessproduct && npm run christmasless",
     "bundle": "webpack",
+    "preinstall": "npm run build",
     "build": "npm run lint && npm run bundle && npm run less"
   },
   "repository": {
