@@ -1,4 +1,3 @@
-import "./christmas.ts";
 const logo = document.getElementById("logo");
 const searchBtn = document.getElementById("searchButton");
 const searchTerm = document.getElementById("searchTerm");

@@ -10,5 +10,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 document.getElementById("about").addEventListener("click", () => {
     mariah.pause();
-    document.getElementById("about").classList.add("hidden");
+    document.getElementById("julkalender").classList.add("hidden");
 });
