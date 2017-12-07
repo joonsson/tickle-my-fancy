@@ -3,31 +3,22 @@
 @white: #E7F4FA;
 @black: #0C1110;
 
-*, html, body {
-  box-sizing: border-box;
-}
-
-body {
-  height: 100vh;
-  background-color: @white;
-  overflow-x: hidden;
-  font-family: 'Lato', sans-serif;
-  color: @black;
-}
+.hidden {
+  display: none;
+} 
 
 .background {
   height: 100vh;
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
+  max-width: 1200px;
   background: linear-gradient(@dk-blue, @md-blue) no-repeat;
 }
 
 .foreground {
   position: absolute;
-  top: 0;
   width: 100%;
+  max-width: 1200px;
   z-index: 1000;
 	opacity: .99;
 }
@@ -121,7 +112,7 @@ h2 {
   font-size: 1em;
 }
 
-.about {
+#about {
   display: block;
   max-width: 8em;
   float: right;
@@ -199,7 +190,9 @@ h2 {
 }
 
 .card .card-front {
-  background: darken(@md-blue, 10%);
+  background: darken(#BF252B, 10%);
+  background-image: url("https://cdn.allwallpaper.in/wallpapers/2238x2236/6940/bow-2238x2236-wallpaper.jpg");
+  background-size: 400px 400px;
   margin: 0;
   cursor: pointer;
 }
@@ -207,14 +200,16 @@ h2 {
 .card-content {
   height: 100%;
   backface-visibility: hidden;
-  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/238722/donaldtrump.jpg');
+  background-image: url('/img/lucka7-1.png');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: auto 100%;
+  background-size: 400px 400px;
 }
 
 .card .card-back {
-  background: darken(@md-blue, 20%);
+  background: darken(rgb(47, 23, 112), 20%);
   transform: rotateY(180deg);
   margin: 0;
+  background-image: url("http://www.harligahund.se/wp-content/uploads/2014/12/lucka7-556x500.jpg");
+  background-size: 400px 400px;
 } 

@@ -14,7 +14,8 @@
     "christmasless": "lessc websource/css/christmas.less src/main/resources/static/css/christmas.css",
     "less": "npm run styleless && npm run customerless && npm run lessproduct && npm run christmasless",
     "bundle": "webpack",
-    "build": "npm run lint && npm run bundle && npm run less"
+    "copychristmas": "cp websource/script/christmas.js src/main/resources/static/script/christmas.js",
+    "build": "npm run lint && npm run bundle && npm run less && npm run copychristmas"
   },
   "repository": {
     "type": "git",

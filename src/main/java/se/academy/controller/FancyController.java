@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -39,9 +40,14 @@ public class FancyController {
         return "index";
     }
 
-    @GetMapping("/christmas")
-    public String christmas(Model model, HttpSession session) {
-        return "christmas";
+    @RequestMapping("/customerpage")
+    public String showPersonalPage(Model model, HttpSession session){
+        Customer customer = (Customer) session.getAttribute("sessionCustomer");
+        if(customer == null){
+            return "redirect:/";
+        }
+        model.addAttribute("customer",customer);
+        return "customerpage";
     }
 
     @GetMapping("/login")
