@@ -20,7 +20,7 @@
         <div id="logoDiv">
             <!--<img src="https://i.ytimg.com/vi/e3Nl_TCQXuw/maxresdefault.jpg" id="logo"/>-->
             <img src="./img/logo.png" id="logo" />
-        </div>
+      </div>
         <div id="menubar">
             <div id="searchbar">
                 <input type="text" id="searchTerm" placeholder="What are you looking for?" />
@@ -33,39 +33,31 @@
                 <span>category3</span>
                 <span>category4</span>
                 <span>category5</span>
-                <span>category6</span>
             </div>
         </div>
-        <div id="cartbox">
-            <!-- here we have som links to both the login in site and to the cart. these doesn't need to be links, we can use SPA if we want. -->
-            <div th:if="${isLogedIn} == true">
-                <form action="/logout" method="post">
-                    <input type="submit" value="logout" />
-                </form>
-            </div>
-            <div th:if="${isLogedIn} == false">
-                <form action="/login" method="post">
-                    <div>E-postadress:</div>
-                    <input name="email" type="text" />
-                    <div>Lösenord:</div>
-                    <input name="password" type="password" />
-                    <input type="submit" value="Logga in" />
-                    <div th:text="${loginFail}"></div>
-                    <div>
-                        <a href="registration.html">Skapa nytt konto</a>
-                    </div>
-                </form>
-            </div>
-            <div th:if="${isLogedIn} == true" id="login">
-                <a href="registration.html">
-                    <img src="./img/loginlogo.png" id="loginlogo" />
-                </a>
-            </div>
-            <div th:if="${isLogedIn} == true" id="cart">
-                <img src="./img/shopping-cart.png" id="cartlogo" />
-            </div>
+    </div>
+    <div id="cartbox">
+        <!-- here we have som links to both the login in site and to the cart. these doesn't need to be links, we can use SPA if we want. -->
+        <div th:if="${isLogedIn} == false">
+            <form action="/login" method="post">
+                <div>E-postadress:</div>
+                <input name="email" type="text" />
+                <div>Lösenord:</div>
+                 <input name="password" type="password" />
+                <input type="submit" value="Logga in"/>
+                <div th:text="${loginFail}"></div>
+                <div><a href="registration.html">Skapa nytt konto</a></div>
+            </form>
         </div>
-    </header>
+        <div th:if="${isLogedIn} == true" id="login"><a href="customerpage.html"><img src="./img/mypagelogo.png" id="mypagelogo"/></a></div>
+        <div th:if="${isLogedIn} == true" id="cart"><img src="./img/shopping-cart.png" id="cartlogo"/></div>
+        <div th:if="${isLogedIn} == true" id="logoutbutton">
+            <form action="/logout" method="post">
+                <input type="submit" value="logout"/>
+            </form>
+        </div>
+    </div>
+</header>
 
     <section id="pageContent">
 
