@@ -105,11 +105,20 @@
             <h3>Eyes</h3>
         </div>
         <div class="recommendedProduct" id="eyes">
+            <!--THIS DIV BELOW SHOULD RETURN A PICTURE ON OUR PRODUCT.
+            BUT SOMEHOW IT CRASHES THE WHOLE SITE..
+            DO NOT REALLY KNOW WHY.. IT SAYS:
+            There was an unexpected error (type=Internal Server Error, status=500). Exception evaluating SpringEL expression: "product.image" (index:113)-->
+                <div th:each="product : ${image}">
+                    <p th:text="${product.image}"></p>
+                    <img src="@{product.image}"/>
+                </div>
+
+
             <div th:each="product : ${eyes}">
                 <p>
                     <a th:href="'/productinfo?productID='+${product.productID}" th:text="${product.name}"></a>
                 </p>
-                <p th:text="${product.image}"></p>
                 <p th:text="${product.price +' kr'}">kr</p>
                 <p th:text="${product.description}"></p>
 

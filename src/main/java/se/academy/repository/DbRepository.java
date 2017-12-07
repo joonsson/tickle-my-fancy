@@ -173,7 +173,7 @@ public class DbRepository {
         Queue<Product> products = getHelper("SELECT TOP (3) * FROM products WHERE subcategory = (?)", category);
         return products;
     }
-    
+
     public Queue<Product> getByCategory(String category) {
         Queue<Product> products = getHelper("SELECT * FROM products WHERE category = (?)", category);
         return products;
@@ -213,6 +213,23 @@ public class DbRepository {
                         rs.getInt("quantity")
                 );
                 return product;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    //TODO FIX THIS SH*T.. MY IDEA IS THAT WE TAKE THE NAME FROM THE DATABASE AND THEN ADD A PATH AND .PNG TO IT..
+    // BUT IT DOESN'T WORK AND SAVING A PICTURE TO THE DATABASE IS HARDER THEN I THOUGT..
+    public String getImage(int productID){
+        try(Connection conn = dataSource.getConnection();
+            PreparedStatement statement = conn.prepareStatement("SELECT image FROM imagetest WHERE productID = (?)")){
+            statement.setInt(1, productID);
+            ResultSet rs = statement.executeQuery();
+            String image;
+            while(rs.next()){
+                image   = rs.getString("image");
+                return image;
             }
         } catch (SQLException e) {
             e.printStackTrace();
