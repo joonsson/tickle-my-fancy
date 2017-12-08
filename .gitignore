@@ -27,4 +27,6 @@ application.properties
 application.properties
 node_modules
 
-
+*.css
+bundle.js
+bundle.js.map
