@@ -1,0 +1,210 @@
+.hidden {
+  display: none;
+}
+.background {
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+  max-width: 1200px;
+  background: linear-gradient(#003154, #64A9EA) no-repeat;
+}
+.foreground {
+  position: absolute;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 1000;
+  opacity: .99;
+}
+svg.background__ground {
+  position: absolute;
+  bottom: 0;
+}
+@media screen and (min-width: 1100px) {
+  svg.background__ground {
+    bottom: -2em;
+  }
+}
+@media screen and (min-width: 1400px) {
+  svg.background__ground {
+    bottom: -4em;
+  }
+}
+#snowman {
+  width: 18em;
+  position: absolute;
+  bottom: 0;
+  margin: 1em;
+}
+@media screen and (min-width: 720px) {
+  #snowman {
+    bottom: 3em;
+    left: 2em;
+  }
+}
+@media screen and (min-width: 900px) {
+  #snowman {
+    bottom: 5em;
+    left: 3em;
+  }
+}
+@media screen and (min-width: 1100px) {
+  #snowman {
+    left: 5em;
+  }
+}
+@media screen and (min-width: 1500px) {
+  #snowman {
+    bottom: 8em;
+  }
+}
+g.background__snowman {
+  animation: rock 6s ease-in-out 2s infinite;
+  transform-origin: 50% 100%;
+}
+.container--snowflakes {
+  max-width: 1200px;
+  margin: 3em auto 1em auto;
+}
+#snowflakes-1 {
+  opacity: 0;
+  animation: snowfall 2.2s ease-out 1s infinite;
+}
+#snowflakes-2 {
+  opacity: 0;
+  animation: snowfall 2.5s ease-out 0.7s infinite;
+}
+#snowflakes-3 {
+  opacity: 0;
+  animation: snowfall 3s ease-out 1.2s infinite;
+}
+#snowflakes-4 {
+  opacity: 0;
+  animation: snowfall 2.8s ease-out 0.8s infinite;
+}
+@keyframes snowfall {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-2em, 10em);
+  }
+}
+@keyframes rock {
+  0% {
+    transform: rotate(0);
+  }
+  60% {
+    transform: rotate(-2deg);
+  }
+  80% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+/* Foreground styles */
+h1 {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+h2 {
+  font-weight: 400;
+  font-size: 1em;
+}
+#about {
+  display: block;
+  max-width: 8em;
+  float: right;
+  padding: 1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: .06em;
+  cursor: pointer;
+  text-align: center;
+  font-size: .9em;
+  background-color: #002845;
+  color: #64A9EA;
+  border-radius: .5em;
+  margin: 1em;
+}
+.front {
+  background: linear-gradient(45deg, #003154, #64A9EA);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid #64A9EA;
+  border-right: 2px solid #64A9EA;
+  border-bottom: 2px solid #003154;
+  border-left: 2px solid #003154;
+}
+.front h1 {
+  font-size: 3em;
+  color: #003154;
+}
+.back {
+  background-color: #00223b;
+}
+.center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.card-container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  margin: 0px auto 40px;
+  perspective: 800px;
+  background: #E7F4FA;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+}
+.card.flipped {
+  transform: translateY(0%) rotateY(-180deg);
+}
+.card .card-front,
+.card .card-back {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+.card .card-front {
+  background: #941d21;
+  background-image: url("https://cdn.allwallpaper.in/wallpapers/2238x2236/6940/bow-2238x2236-wallpaper.jpg");
+  background-size: 400px 400px;
+  margin: 0;
+  cursor: pointer;
+}
+.card-content {
+  height: 100%;
+  backface-visibility: hidden;
+  background-image: url('/img/lucka7-1.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 400px 400px;
+}
+.card .card-back {
+  background: #0b061b;
+  transform: rotateY(180deg);
+  margin: 0;
+  background-image: url("http://www.harligahund.se/wp-content/uploads/2014/12/lucka7-556x500.jpg");
+  background-size: 400px 400px;
+}
